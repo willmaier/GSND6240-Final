@@ -53,7 +53,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 5
-  jumpForce: 5
+  jumpForce: 7
   facingRight: 1
 --- !u!114 &5102639300955335591
 MonoBehaviour:
