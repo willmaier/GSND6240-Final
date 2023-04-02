@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private enum MovementState { idle, jumping, falling }
 
+    public bool facingRight = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(facingRight);
         dirX = Input.GetAxisRaw("Horizontal");
+
+        if (dirX < 0)
+        {
+            facingRight = false;
+        }
+
+        if (dirX == 1)
+        {
+            facingRight = true;
+        }
 
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 

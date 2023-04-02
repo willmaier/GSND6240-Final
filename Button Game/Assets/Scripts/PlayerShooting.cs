@@ -7,7 +7,7 @@ public class PlayerShooting : MonoBehaviour
     public GameObject shot, chargedShot, specialShot;
 
     public float shotSpeed = 5.0f;
-
+    private bool isFacingRight = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +17,27 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isFacingRight = GetComponent<PlayerMovement>().facingRight;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        var bullet = Instantiate(shot, transform.position, transform.rotation);
+        //bullet.velocity (Vector2.right * shotSpeed * Time.deltaTime);
+        if (isFacingRight == true)
+        {
+            bullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * shotSpeed;
+        }
+        else
+        {
+            bullet.GetComponent<Rigidbody2D>().velocity = Vector2.left * shotSpeed;
+        }
         
+        Destroy(bullet, 5);
     }
 }
