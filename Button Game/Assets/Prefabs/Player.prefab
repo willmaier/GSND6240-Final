@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427540412540866026}
   - component: {fileID: 1427540412540866027}
+  - component: {fileID: 5102639300955335591}
   - component: {fileID: 1427540412540866021}
   - component: {fileID: 1427540412540866030}
   - component: {fileID: 1427540412540866025}
@@ -54,6 +55,22 @@ MonoBehaviour:
     m_Bits: 8
   moveSpeed: 5
   jumpForce: 5
+--- !u!114 &5102639300955335591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427540412540866020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7178f0959de972146a4f81f8721f4341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shot: {fileID: 0}
+  chargedShot: {fileID: 0}
+  specialShot: {fileID: 0}
+  shotSpeed: 5
 --- !u!212 &1427540412540866021
 SpriteRenderer:
   m_ObjectHideFlags: 0
