@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 558873377}
   - component: {fileID: 558873376}
   m_Layer: 0
-  m_Name: Tilemap_Decoration 0
+  m_Name: Tilemap_Decoration Layer0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2754,7 +2754,7 @@ GameObject:
   - component: {fileID: 2100560839}
   - component: {fileID: 2100560838}
   m_Layer: 0
-  m_Name: Tilemap_Decoration 2
+  m_Name: Tilemap_Decoration Layer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
