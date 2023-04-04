@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
         // traditional 'spacebar' input is commented out
         // if (Input.GetButtonDown("Jump") && IsGrounded())
-            if (Input.GetKey(KeyCode.Keypad3) && Input.GetKey(KeyCode.Keypad7) && IsGrounded())
+            if (Input.GetKey(KeyCode.Alpha3) && Input.GetKey(KeyCode.Alpha7) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
