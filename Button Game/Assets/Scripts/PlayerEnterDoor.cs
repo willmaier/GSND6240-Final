@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EnterDoor : MonoBehaviour
+public class PlayerEnterDoor : MonoBehaviour
 {
     private bool enterAllowed;
     private string sceneToLoad;
