@@ -23,12 +23,12 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Set the camera's target position in front of the player, direction based on the player's inputs
+        // Set the camera's target horizontal position in front of the player, direction based on the player's inputs
         targetPosition.x = playerTransform.position.x + (cameraDistance * Input.GetAxisRaw("Horizontal"));
-        targetPosition.y = playerTransform.position.y + 1; // Lock the camera's height at player's y vector + 1
-        targetPosition.z = -10;
 
-        // Smoothly move the camera to the target position
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        // Create a dampened vector; we'll only be using the x value of the dampened vector
+        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+
+        transform.position = new Vector3(smoothedPosition.x, playerTransform.position.y + 1, -10);
     }
 }
