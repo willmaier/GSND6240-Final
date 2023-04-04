@@ -184,11 +184,11 @@ PrefabInstance:
       objectReference: {fileID: 519492358}
     - target: {fileID: 4041535050021301482, guid: 7b504df129e07d1448526791e7adc981, type: 3}
       propertyPath: smoothTime
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4041535050021301482, guid: 7b504df129e07d1448526791e7adc981, type: 3}
       propertyPath: cameraDistance
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b504df129e07d1448526791e7adc981, type: 3}

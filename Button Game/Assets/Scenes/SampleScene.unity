@@ -123,9 +123,9 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &1077735832 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1427540412540866026, guid: 84c3a10d95c9aad4e9904f13a15cee3a, type: 3}
+--- !u!1 &232708579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1427540412540866020, guid: 84c3a10d95c9aad4e9904f13a15cee3a, type: 3}
   m_PrefabInstance: {fileID: 1427540413618568306}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1175882963
@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4041535050021301481, guid: 7b504df129e07d1448526791e7adc981, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4041535050021301481, guid: 7b504df129e07d1448526791e7adc981, type: 3}
       propertyPath: m_LocalRotation.w
@@ -297,7 +297,11 @@ PrefabInstance:
     - target: {fileID: 4041535050021301482, guid: 7b504df129e07d1448526791e7adc981, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1077735832}
+      objectReference: {fileID: 232708579}
+    - target: {fileID: 4041535050021301482, guid: 7b504df129e07d1448526791e7adc981, type: 3}
+      propertyPath: cameraDistance
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b504df129e07d1448526791e7adc981, type: 3}
 --- !u!1001 &1427540413618568306

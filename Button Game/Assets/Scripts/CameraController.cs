@@ -7,10 +7,12 @@ public class CameraController : MonoBehaviour
     public GameObject player;
     private Transform playerTransform;
 
-    public float smoothTime = 0.3f;
-    public float cameraDistance = 10.0f;
+    public float smoothTime = 0.5f;
+    public float cameraDistance = 5.0f;
 
     private Vector3 velocity = Vector3.zero;
+
+    private Vector3 targetPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +23,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Set the camera's target position in front of the player
-        Vector3 targetPosition = playerTransform.position + playerTransform.forward * cameraDistance;
+        // Set the camera's target position in front of the player, direction based on the player's inputs
+        targetPosition.x = playerTransform.position.x + (cameraDistance * Input.GetAxisRaw("Horizontal"));
         targetPosition.y = playerTransform.position.y + 1; // Lock the camera's height at player's y vector + 1
         targetPosition.z = -10;
 
