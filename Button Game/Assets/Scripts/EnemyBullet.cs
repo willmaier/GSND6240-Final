@@ -29,6 +29,7 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
             //not currently working 
             //Invoke("RestartLevel", 2);
+            RestartLevel();
         }
         else if (collision.gameObject.tag != "Enemy")
         {
