@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyBullet : MonoBehaviour
 {
@@ -24,13 +25,20 @@ public class EnemyBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
-        {
-            // add killing player or restarting level
+     {        
             Destroy(gameObject);
+            //not currently working 
+            //Invoke("RestartLevel", 2);
         }
         else if (collision.gameObject.tag != "Enemy")
         {
             Destroy(gameObject);
         }
+    }
+
+    void RestartLevel()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
