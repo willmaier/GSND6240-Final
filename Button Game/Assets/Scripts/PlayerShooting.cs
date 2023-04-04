@@ -19,7 +19,7 @@ public class PlayerShooting : MonoBehaviour
     {
         isFacingRight = GetComponent<PlayerMovement>().facingRight;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             Shoot();
         }

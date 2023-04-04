@@ -18,6 +18,10 @@ public class PlayerSimpleBullet : MonoBehaviour
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.tag == "PlayerBullet")
+        {
+
+        }
         else if (collision.gameObject.tag != "Player")
         {
             Destroy(gameObject);
