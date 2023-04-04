@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public GameObject shot, chargedShot, specialShot;
+    public GameObject gunTip, shot, chargedShot, specialShot;
 
     public float shotSpeed = 5.0f;
     private bool isFacingRight = true;
@@ -27,7 +27,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     {
-        var bullet = Instantiate(shot, transform.position, transform.rotation);
+        var bullet = Instantiate(shot, gunTip.transform.position, transform.rotation);
         //bullet.velocity (Vector2.right * shotSpeed * Time.deltaTime);
         if (isFacingRight == true)
         {
