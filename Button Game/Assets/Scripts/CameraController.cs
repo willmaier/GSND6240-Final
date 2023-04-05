@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
@@ -9,18 +10,32 @@ public class CameraController : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    private Vector3 targetPosition;
+    public ButtonGameControls loadedControls;
 
-    // Start is called before the first frame update
-    void Start()
+    private InputAction cameraHorizontalMovement;
+
+    private Vector3 targetPosition;
+    private void Awake()
     {
+        loadedControls = new ButtonGameControls();
+    }
+
+    private void OnEnable()
+    {
+        cameraHorizontalMovement = loadedControls.Player.MoveHorizontally;
+        cameraHorizontalMovement.Enable();
+    }
+
+    private void OnDisable()
+    {
+        cameraHorizontalMovement.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Set the camera's target horizontal position in front of the player, direction based on the player's inputs
-        targetPosition.x = cameraDistance * Input.GetAxisRaw("Horizontal");
+        targetPosition.x = cameraDistance * cameraHorizontalMovement.ReadValue<float>();
 
         // Create a dampened vector; we'll only be using the x value of the dampened vector
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.localPosition, targetPosition, ref velocity, smoothTime);

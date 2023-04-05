@@ -1,25 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class PlayerShooting : MonoBehaviour
 {
     public GameObject gunTip, shot, chargedShot, specialShot;
 
     public float shotSpeed = 5.0f;
-    private bool isFacingRight = true;
-    // Start is called before the first frame update
-    void Start()
+
+    public ButtonGameControls loadedControls;
+
+    private InputAction playerShoot;
+    private void Awake()
     {
-        
+        loadedControls = new ButtonGameControls();
+    }
+
+    private void OnEnable()
+    {
+        playerShoot = loadedControls.Player.Fire;
+        playerShoot.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerShoot.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        isFacingRight = GetComponent<PlayerMovement>().facingRight;
-
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (playerShoot.WasPressedThisFrame())
         {
             Shoot();
         }
@@ -29,7 +42,8 @@ public class PlayerShooting : MonoBehaviour
     {
         var bullet = Instantiate(shot, gunTip.transform.position, transform.rotation);
         //bullet.velocity (Vector2.right * shotSpeed * Time.deltaTime);
-        if (isFacingRight == true)
+        bool isFacingRight = GetComponent<PlayerController>().facingRight;
+        if (isFacingRight)
         {
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * shotSpeed;
         }

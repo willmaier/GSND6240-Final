@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerMovement : MonoBehaviour
+using UnityEngine.InputSystem;
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator anim;
+
+    public ButtonGameControls loadedControls;
+
+    private InputAction playerHorizontalMovement;
+    private InputAction playerJump;
 
     [SerializeField] private LayerMask jumpableGround;
 
@@ -18,6 +23,26 @@ public class PlayerMovement : MonoBehaviour
     private enum MovementState { idle, jumping, falling }
 
     public bool facingRight = true;
+
+    private void Awake()
+    {
+        loadedControls = new ButtonGameControls();
+    }
+    
+    private void OnEnable()
+    {
+        playerHorizontalMovement = loadedControls.Player.MoveHorizontally;
+        playerHorizontalMovement.Enable();
+        playerJump = loadedControls.Player.Jump;
+        playerJump.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerHorizontalMovement.Disable();
+        playerJump.Disable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Debug.Log(facingRight);
-        dirX = Input.GetAxisRaw("Horizontal");
+        dirX = playerHorizontalMovement.ReadValue<float>();
 
         if (dirX < 0)
         {
@@ -43,11 +68,11 @@ public class PlayerMovement : MonoBehaviour
             facingRight = true;
         }
 
+        // Move horizontally
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
-        // traditional 'spacebar' input is commented out
-        // if (Input.GetButtonDown("Jump") && IsGrounded())
-            if (Input.GetKey(KeyCode.Alpha3) && Input.GetKey(KeyCode.Alpha7) && IsGrounded())
+        // Jump
+            if (playerJump.WasPressedThisFrame() && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
