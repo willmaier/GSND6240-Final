@@ -388,4 +388,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTime: 0.5
-  cameraDistance: 5
+  cameraDistance: 4
