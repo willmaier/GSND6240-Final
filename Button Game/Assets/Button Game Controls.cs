@@ -28,22 +28,13 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
             ""id"": ""fbdb9280-78dd-4cfc-9c21-fc465b76b570"",
             ""actions"": [
                 {
-                    ""name"": ""Move Horizontally"",
+                    ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""0648b5d2-2b61-450f-9375-40e0f8d154bd"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Fire"",
-                    ""type"": ""Button"",
-                    ""id"": ""244a0119-b8a3-46cf-a5d9-dd0e5345675a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Jump"",
@@ -62,6 +53,24 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SimpleFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""244a0119-b8a3-46cf-a5d9-dd0e5345675a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChargedFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bc48ee0-7f83-4098-ac7f-779c8696fbef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -72,7 +81,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move Horizontally"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -83,7 +92,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move Horizontally"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -94,20 +103,9 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move Horizontally"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Keyboard>/numpad9"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
@@ -128,6 +126,50 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Hold 8 Press 9"",
+                    ""id"": ""d4c008d6-8ed1-4217-b99a-285e21a6867c"",
+                    ""path"": ""ButtonWithOneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChargedFire"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""button"",
+                    ""id"": ""8b82ba40-30b7-4414-b95a-a78ece51ed0d"",
+                    ""path"": ""<Keyboard>/numpad9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ChargedFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""4da63371-f189-482d-b854-6ac3cd7ccdc6"",
+                    ""path"": ""<Keyboard>/numpad8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ChargedFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
+                    ""path"": ""<Keyboard>/numpad9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SimpleFire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -715,10 +757,11 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_MoveHorizontally = m_Player.FindAction("Move Horizontally", throwIfNotFound: true);
-        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_SimpleFire = m_Player.FindAction("SimpleFire", throwIfNotFound: true);
+        m_Player_ChargedFire = m_Player.FindAction("ChargedFire", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -790,18 +833,20 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_MoveHorizontally;
-    private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_SimpleFire;
+    private readonly InputAction m_Player_ChargedFire;
     public struct PlayerActions
     {
         private @ButtonGameControls m_Wrapper;
         public PlayerActions(@ButtonGameControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MoveHorizontally => m_Wrapper.m_Player_MoveHorizontally;
-        public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @SimpleFire => m_Wrapper.m_Player_SimpleFire;
+        public InputAction @ChargedFire => m_Wrapper.m_Player_ChargedFire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -811,34 +856,40 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @MoveHorizontally.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontally;
-                @MoveHorizontally.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontally;
-                @MoveHorizontally.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontally;
-                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @SimpleFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
+                @SimpleFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
+                @SimpleFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
+                @ChargedFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedFire;
+                @ChargedFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedFire;
+                @ChargedFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedFire;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @MoveHorizontally.started += instance.OnMoveHorizontally;
-                @MoveHorizontally.performed += instance.OnMoveHorizontally;
-                @MoveHorizontally.canceled += instance.OnMoveHorizontally;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @SimpleFire.started += instance.OnSimpleFire;
+                @SimpleFire.performed += instance.OnSimpleFire;
+                @SimpleFire.canceled += instance.OnSimpleFire;
+                @ChargedFire.started += instance.OnChargedFire;
+                @ChargedFire.performed += instance.OnChargedFire;
+                @ChargedFire.canceled += instance.OnChargedFire;
             }
         }
     }
@@ -995,10 +1046,11 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
-        void OnMoveHorizontally(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnSimpleFire(InputAction.CallbackContext context);
+        void OnChargedFire(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

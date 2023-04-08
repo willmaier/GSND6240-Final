@@ -43,3 +43,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background Distant
+    uniqueID: 1281293901
+    locked: 0
+  - name: Background Environment
+    uniqueID: 2601316727
+    locked: 0
+  - name: Background Objects
+    uniqueID: 2899853857
+    locked: 0
+  - name: Player Character
+    uniqueID: 34086331
+    locked: 0
+  - name: Foreground Objects
+    uniqueID: 3705125971
+    locked: 0
+  - name: Foreground Environment
+    uniqueID: 4097619179
+    locked: 0

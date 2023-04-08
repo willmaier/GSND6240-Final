@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,42 +10,66 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
-    public ButtonGameControls loadedControls;
-
-    private InputAction playerHorizontalMovement;
-    private InputAction playerJump;
-
     [SerializeField] private LayerMask jumpableGround;
 
-    private float dirX = 0f;
-    [SerializeField] private float moveSpeed = 7.5f;
-    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 7f;
 
-    private enum MovementState { idle, jumping, falling }
+    // private enum MovementState { idle, jumping, falling }
 
-    public bool facingRight = true;
+    [SerializeField] public bool _isFacingRight = true;
+
+    public bool IsFacingRight
+    {
+        get
+        {
+            return _isFacingRight;
+        }
+        private set
+        {
+            if (_isFacingRight != value) // If value is new (i.e player has flipped their controls)...
+            {
+                //... then also flip transform horizontally.
+                transform.localScale *= new Vector2(-1, 1);
+            }
+            _isFacingRight = value;
+        }
+    }
+
+    [SerializeField] private bool _isMoving = false;
+
+    public bool IsMoving 
+    { 
+        get
+        {
+            return _isMoving;
+        }
+        private set
+        {
+            _isMoving = value;
+            anim.SetBool("isMoving", value);
+        }
+    }
+
+    [SerializeField] private bool _isGrounded = true;
+
+    public bool IsGrounded
+    {
+        get
+        {
+            return _isGrounded;
+        }
+        private set
+        {
+            _isGrounded = value;
+            //anim.SetBool
+        }
+    }
+
+    float moveInput;
+    bool jumpInput;
 
     private void Awake()
-    {
-        loadedControls = new ButtonGameControls();
-    }
-    
-    private void OnEnable()
-    {
-        playerHorizontalMovement = loadedControls.Player.MoveHorizontally;
-        playerHorizontalMovement.Enable();
-        playerJump = loadedControls.Player.Jump;
-        playerJump.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerHorizontalMovement.Disable();
-        playerJump.Disable();
-    }
-
-    // Start is called before the first frame update
-    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
@@ -52,43 +77,40 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        // Debug.Log(facingRight);
-        dirX = playerHorizontalMovement.ReadValue<float>();
+        // Move horizontally based on moveInput set by OnMove
+        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
-        if (dirX < 0)
+        // Check if grounded
+        IsGrounded = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<float>();
+
+        IsMoving = moveInput != 0;
+
+        SetFacingDirection(moveInput); // Set facing direction only when movement is inputted
+    }
+
+    private void SetFacingDirection(float moveInput)
+    {
+        if (moveInput > 0 && !IsFacingRight)
         {
-            facingRight = false;
-        }
-
-        if (dirX == 1)
+            IsFacingRight = true;
+        } else if (moveInput < 0 && IsFacingRight)
         {
-            facingRight = true;
+            IsFacingRight = false;
         }
+    }
 
-        // Move horizontally
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-
-        // Jump
-            if (playerJump.WasPressedThisFrame() && IsGrounded())
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.started && IsGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
-
-    private bool IsGrounded()
-    {
-        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
-    }
-
-    // better way to check for button presses?
-    /* private bool isJumping()
-    {
-        if (Input.GetKey(KeyCode.Keypad3)
-        {
-            return true;
-        }
-    } */
 }

@@ -10,31 +10,23 @@ public class PlayerShooting : MonoBehaviour
 
     public float shotSpeed = 5.0f;
 
-    public ButtonGameControls loadedControls;
-
-    private InputAction playerShoot;
-    private void Awake()
+    public void OnSimpleFire(InputAction.CallbackContext context)
     {
-        loadedControls = new ButtonGameControls();
-    }
-
-    private void OnEnable()
-    {
-        playerShoot = loadedControls.Player.Fire;
-        playerShoot.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerShoot.Disable();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (playerShoot.WasPressedThisFrame())
+        if (context.started)
         {
             Shoot();
+        }
+    }
+
+    public void OnChargedFire(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Debug.Log("Charge started.");
+        }
+        if (context.canceled)
+        {
+            Debug.Log("Charge ended.");
         }
     }
 
@@ -42,7 +34,7 @@ public class PlayerShooting : MonoBehaviour
     {
         var bullet = Instantiate(shot, gunTip.transform.position, transform.rotation);
         //bullet.velocity (Vector2.right * shotSpeed * Time.deltaTime);
-        bool isFacingRight = GetComponent<PlayerController>().facingRight;
+        bool isFacingRight = GetComponent<PlayerController>().IsFacingRight;
         if (isFacingRight)
         {
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * shotSpeed;
