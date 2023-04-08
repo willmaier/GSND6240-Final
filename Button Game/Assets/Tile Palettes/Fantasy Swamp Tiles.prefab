@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1234010051666139347}
   - component: {fileID: 8975317933211988517}
   m_Layer: 0
-  m_Name: Decoration Tiles
+  m_Name: Fantasy Swamp Tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
