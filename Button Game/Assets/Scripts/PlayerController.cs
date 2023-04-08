@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         private set
         {
             _isGrounded = value;
-            //anim.SetBool
+            anim.SetBool("isGrounded", value);
         }
     }
 
