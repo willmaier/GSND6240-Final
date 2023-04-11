@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     // private enum MovementState { idle, jumping, falling }
 
     [SerializeField] public bool _isFacingRight = true;
-
     public bool IsFacingRight
     {
         get
@@ -52,6 +51,23 @@ public class PlayerController : MonoBehaviour
     }
 
     [SerializeField] private bool _isGrounded = true;
+
+    [SerializeField] private bool _canInteract = false;
+
+    public bool canInteract
+    {
+        get
+        {
+            return _canInteract;
+        }
+        private set
+        {
+            _canInteract = value;
+            // do something here to show interact star
+        }
+    }
+
+    [SerializeField] public GameObject interactingObject = null;
 
     public bool IsGrounded
     {
@@ -113,4 +129,27 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        //known issues: glitchy interactions if touchin 2 interactible objects at one time
+        canInteract = true;
+        interactingObject = collision.gameObject;
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        //known issues: glitchy interactions if touchin 2 interactible objects at one time
+        canInteract = false;
+        interactingObject = null;
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (canInteract)
+        {
+            InteractionController con = interactingObject.GetComponent<InteractionController>();
+            con.Interact();
+        }
+    }
+
 }

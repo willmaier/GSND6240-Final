@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1427540412540866024}
   - component: {fileID: 1427540412540866027}
   - component: {fileID: 5102639300955335591}
-  - component: {fileID: 6721532365223176089}
   - component: {fileID: 286986702377155859}
   m_Layer: 0
   m_Name: Player
@@ -169,6 +168,8 @@ MonoBehaviour:
   _isFacingRight: 1
   _isMoving: 0
   _isGrounded: 1
+  _canInteract: 0
+  interactingObject: {fileID: 0}
 --- !u!114 &5102639300955335591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,18 +187,6 @@ MonoBehaviour:
   chargedShot: {fileID: 0}
   specialShot: {fileID: 0}
   shotSpeed: 5
---- !u!114 &6721532365223176089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427540412540866020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da391e212561fbe4e9a1b586f30b76a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &286986702377155859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +261,19 @@ MonoBehaviour:
     m_ActionId: 96740641-e3b0-4cb2-82a6-ca50bbd74f02
     m_ActionName: Player/Jump[/Keyboard/numpad5]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1427540412540866027}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a1378df5-8946-4253-ba5f-ac106dd239fe
     m_ActionName: Player/Interact[/Keyboard/numpad2]
   - m_PersistentCalls:
