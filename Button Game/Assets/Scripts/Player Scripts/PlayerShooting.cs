@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     public GameObject gunTip, shot, chargedShot, specialShot;
 
     public float shotSpeed = 5.0f;
+    public float chargedShotSpeed = 2.5f;
 
     public void OnSimpleFire(InputAction.CallbackContext context)
     {
@@ -23,6 +24,7 @@ public class PlayerShooting : MonoBehaviour
         if (context.started)
         {
             Debug.Log("Charge started.");
+            ChargedShoot();
         }
         if (context.canceled)
         {
@@ -45,5 +47,22 @@ public class PlayerShooting : MonoBehaviour
         }
         
         Destroy(bullet, 5);
+    }
+
+    void ChargedShoot()
+    {
+        var chargedBullet = Instantiate(chargedShot, gunTip.transform.position, transform.rotation);
+        //bullet.velocity (Vector2.right * shotSpeed * Time.deltaTime);
+        bool isFacingRight = GetComponent<PlayerController>().IsFacingRight;
+        if (isFacingRight)
+        {
+            chargedBullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * chargedShotSpeed;
+        }
+        else
+        {
+            chargedBullet.GetComponent<Rigidbody2D>().velocity = Vector2.left * chargedShotSpeed;
+        }
+
+        Destroy(chargedBullet, 5);
     }
 }
