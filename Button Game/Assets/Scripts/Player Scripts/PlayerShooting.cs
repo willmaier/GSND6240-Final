@@ -11,11 +11,37 @@ public class PlayerShooting : MonoBehaviour
     public float shotSpeed = 5.0f;
     public float chargedShotSpeed = 2.5f;
 
+    private bool charging = false;
+    [SerializeField] private float _chargingPercent = 0;
+
+    public float chargingPercent
+    {
+        get
+        {
+            return _chargingPercent;
+        }
+        set
+        {
+            if (value >= 100)
+            {
+                _chargingPercent = 100;
+            }
+            else
+            {
+                _chargingPercent = value;
+            }
+        }
+    }
+
     public void OnSimpleFire(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Shoot();
+            if (!charging)
+            {
+                Debug.Log("Simple shot.");
+                Shoot();
+            }
         }
     }
 
@@ -24,11 +50,25 @@ public class PlayerShooting : MonoBehaviour
         if (context.started)
         {
             Debug.Log("Charge started.");
-            ChargedShoot();
+            charging = true;
         }
         if (context.canceled)
         {
             Debug.Log("Charge ended.");
+            charging = false;
+            if (chargingPercent == 100)
+            {
+                ChargedShoot();
+            }
+            chargingPercent = 0;
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        if (charging)
+        {
+            chargingPercent++;
         }
     }
 
