@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial2.unity
     guid: 4e7faa4773a2a8848b40e13f3c89ec6b
+  - enabled: 1
+    path: Assets/Scenes/WillTutorial.unity
+    guid: a04c1ca62717ee54d98dbb74326edb77
   m_configObjects: {}
