@@ -121,12 +121,36 @@ public class PlayerController : MonoBehaviour
             IsFacingRight = false;
         }
     }
+//double jump
+    [SerializeField] private bool _canDoubleJump = true;
 
+    public bool canDoubleJump
+    {
+        get
+        {
+            return _canDoubleJump;
+        }
+        private set
+        {
+            _canDoubleJump = value;
+        }
+    }
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.started && IsGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+        // else if can double jump
+        // double jump
+        else if (context.started && canDoubleJump)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            canDoubleJump = false;
+        }
+        else if (IsGrounded)
+        {
+            canDoubleJump = true;
         }
     }
 
@@ -151,5 +175,4 @@ public class PlayerController : MonoBehaviour
             con.Interact();
         }
     }
-
 }
