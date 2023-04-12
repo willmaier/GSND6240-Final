@@ -170,6 +170,7 @@ MonoBehaviour:
   _isGrounded: 1
   _canInteract: 0
   interactingObject: {fileID: 0}
+  _canDoubleJump: 1
 --- !u!114 &5102639300955335591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,8 +187,8 @@ MonoBehaviour:
   shot: {fileID: 172052424948013622, guid: 53dd4adcff7a36c4eae772ceedcd27e3, type: 3}
   chargedShot: {fileID: 532144882120071878, guid: 40c826e18cbee2546a45ed69f354698d, type: 3}
   specialShot: {fileID: 0}
-  shotSpeed: 5
-  chargedShotSpeed: 2.5
+  shotSpeed: 25
+  chargedShotSpeed: 12.5
   chargeTime: 1
 --- !u!114 &286986702377155859
 MonoBehaviour:
