@@ -266,10 +266,6 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: e0431b38d8713e8489fd9d0d3b61e60c, type: 2}
-    - target: {fileID: 5102639300955335591, guid: 84c3a10d95c9aad4e9904f13a15cee3a, type: 3}
-      propertyPath: chargedShot
-      value: 
-      objectReference: {fileID: 532144882120071878, guid: 40c826e18cbee2546a45ed69f354698d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84c3a10d95c9aad4e9904f13a15cee3a, type: 3}
 --- !u!1 &1005471882
