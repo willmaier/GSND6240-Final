@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7471472220622220139}
   - component: {fileID: 4063634319442106626}
   - component: {fileID: 5528836192860101750}
-  - component: {fileID: 8046565283656123968}
   - component: {fileID: 3210385542057275695}
+  - component: {fileID: -902773807132312055}
   m_Layer: 0
   m_Name: ChargedProjectile
   m_TagString: ChargedBullet
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532144882120071878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: 2.53, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,18 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &8046565283656123968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532144882120071878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 804ba271712f27b4ab6e7585121080ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &3210385542057275695
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -136,3 +124,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-902773807132312055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532144882120071878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f160d031c902f3c4b8252606aab47e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
