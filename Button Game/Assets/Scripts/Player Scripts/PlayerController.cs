@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
         // Check if grounded
-        IsGrounded = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
+        IsGrounded = Physics2D.CapsuleCast(coll.bounds.center, coll.bounds.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.05f, jumpableGround);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
             IsFacingRight = false;
         }
     }
+
 //double jump
     [SerializeField] private bool _canDoubleJump = true;
 
@@ -135,6 +136,7 @@ public class PlayerController : MonoBehaviour
             _canDoubleJump = value;
         }
     }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.started && IsGrounded)
