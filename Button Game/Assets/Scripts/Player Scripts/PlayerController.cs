@@ -100,6 +100,11 @@ public class PlayerController : MonoBehaviour
 
         // Check if grounded
         IsGrounded = Physics2D.CapsuleCast(coll.bounds.center, coll.bounds.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.05f, jumpableGround);
+
+        if (IsGrounded)
+        {
+            canDoubleJump = true;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -149,10 +154,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             canDoubleJump = false;
-        }
-        else if (IsGrounded)
-        {
-            canDoubleJump = true;
         }
     }
 
