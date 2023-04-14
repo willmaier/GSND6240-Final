@@ -188,8 +188,10 @@ MonoBehaviour:
   chargedShot: {fileID: 532144882120071878, guid: 40c826e18cbee2546a45ed69f354698d, type: 3}
   specialShot: {fileID: 0}
   shotSpeed: 25
-  chargedShotSpeed: 12.5
-  chargeTime: 1
+  chargedShotSpeed: 25
+  charging: 0
+  _chargeTime: 0
+  chargeTimeLimit: 1
 --- !u!114 &286986702377155859
 MonoBehaviour:
   m_ObjectHideFlags: 0
