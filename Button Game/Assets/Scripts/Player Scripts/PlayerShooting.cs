@@ -11,35 +11,72 @@ public class PlayerShooting : MonoBehaviour
     public float shotSpeed = 5.0f;
     public float chargedShotSpeed = 2.5f;
 
-    [SerializeField] public float chargeTime = 1.0f;
+    [SerializeField] public bool charging = false;
+    [SerializeField] public float _chargeTime;
+    [SerializeField] public float chargeTimeLimit = 1.0f;
 
-//    private bool charging = false;
-/*    [SerializeField] private float _chargingPercent = 0;
-
-    public float chargingPercent
-    {
+    public float chargeTime
+    { 
         get
         {
-            return _chargingPercent;
+            return _chargeTime;
         }
-        set
-        {
-            if (value >= 100)
+        private set
+        { 
+            if (value <= chargeTimeLimit)
             {
-                _chargingPercent = 100;
+                _chargeTime = value;
             }
             else
             {
-                _chargingPercent = value;
+                _chargeTime = chargeTimeLimit;
             }
         }
+    } 
+
+/*    public ButtonGameControls playerControls;
+    private InputAction simpleFire;
+    private InputAction chargedFire;
+
+    private void Awake()
+    {
+        playerControls = new ButtonGameControls();
+    }
+
+    private void OnEnable()
+    {
+        simpleFire = playerControls.Player.SimpleFire;
+        simpleFire.Enable();
+        chargedFire = playerControls.Player.ChargedFire;
+        chargedFire.Enable();
+    }
+
+    private void OnDisable()
+    {
+        simpleFire.Disable();
+        chargedFire.Disable();
     }*/
 
+    private void FixedUpdate()
+    {
+        if (charging)
+        {
+            chargeTime += Time.deltaTime;
+        }
+    }
+
+    //Known issue: press down 9 and then pressing 8 will first perform the simple fire, then charge the charged fire.
+    //If the player was just trying to make a charged fire, but accidentally pressed 9 before 8, they may feel that the simple fire is an unintended action
+    //Ideally, there should be a super tiny delay grace period to see if the player wants simple fire or charged fire.
     public void OnSimpleFire(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Debug.Log("Simple shot.");
+            if (charging) //If you're also doing a charged fire...
+            {
+                return; /// then do nothing.
+            }
+            //Debug.Log("Simple shot.");
             Shoot();
         }
     }
@@ -48,17 +85,18 @@ public class PlayerShooting : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("Charge started.");
+            //Debug.Log("Charge started.");
+            charging = true;
         }
         if (context.canceled)
         {
-            Debug.Log("Charge ended.");
-            double x = context.duration;
-            Debug.Log(x);
-            if (x >= chargeTime)
+            //Debug.Log("Charge ended.");
+            if (chargeTime >= chargeTimeLimit)
             {
                 ChargedShoot();
             }
+            charging = false;
+            chargeTime = 0;
         }
     }
 
