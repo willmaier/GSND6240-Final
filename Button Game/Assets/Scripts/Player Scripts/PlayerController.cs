@@ -160,8 +160,11 @@ public class PlayerController : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //known issues: glitchy interactions if touchin 2 interactible objects at one time
-        canInteract = true;
-        interactingObject = collision.gameObject;
+        if (collision.gameObject.GetComponent<InteractionController>()) // Check if collision object has an interaction controller
+        {
+            canInteract = true;
+            interactingObject = collision.gameObject;
+        }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
