@@ -81,9 +81,10 @@ public class PlayerController : MonoBehaviour
         // Check if grounded
         IsGrounded = Physics2D.CapsuleCast(coll.bounds.center, coll.bounds.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.05f, jumpableGround);
 
-        if (!chargedModeButton)
+        if (!chargedModeButton || (verticalMoveInput == 0 && horizontalMoveInput == 0)) //If charged mode button isn't pressed, or if no input is made
         {
             // Move horizontally based on horizontalMoveInput set by OnMove
+            rb.gravityScale = 1;
             rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
 
             if (IsGrounded)
@@ -92,9 +93,10 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        else
+        else //If charged mode is pressed, and that some input is made
         {
             //Move using jetpack move
+            rb.gravityScale = 0;
             rb.velocity = new Vector2(horizontalMoveInput * jetpackMoveSpeed, verticalMoveInput * jetpackMoveSpeed);
         }
     }
