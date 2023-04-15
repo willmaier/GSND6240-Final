@@ -11,7 +11,10 @@ public class PlayerShooting : MonoBehaviour
     public float shotSpeed = 5.0f;
     public float chargedShotSpeed = 2.5f;
 
-    [SerializeField] public bool charging = false;
+    [SerializeField] public bool chargedModeButton;
+    [SerializeField] public bool fireButton;
+
+    [SerializeField] public bool cShotCharging = false;
     [SerializeField] public float _chargeTime;
     [SerializeField] public float chargeTimeLimit = 1.0f;
 
@@ -33,72 +36,67 @@ public class PlayerShooting : MonoBehaviour
             }
         }
     } 
-
-/*    public ButtonGameControls playerControls;
-    private InputAction simpleFire;
-    private InputAction chargedFire;
-
-    private void Awake()
-    {
-        playerControls = new ButtonGameControls();
-    }
-
-    private void OnEnable()
-    {
-        simpleFire = playerControls.Player.SimpleFire;
-        simpleFire.Enable();
-        chargedFire = playerControls.Player.ChargedFire;
-        chargedFire.Enable();
-    }
-
-    private void OnDisable()
-    {
-        simpleFire.Disable();
-        chargedFire.Disable();
-    }*/
-
     private void FixedUpdate()
     {
-        if (charging)
+        if (cShotCharging)
         {
             chargeTime += Time.deltaTime;
         }
     }
 
-    //Known issue: press down 9 and then pressing 8 will first perform the simple fire, then charge the charged fire.
-    //If the player was just trying to make a charged fire, but accidentally pressed 9 before 8, they may feel that the simple fire is an unintended action
-    //Ideally, there should be a super tiny delay grace period to see if the player wants simple fire or charged fire.
     public void OnSimpleFire(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            if (charging) //If you're also doing a charged fire...
+            fireButton = true;
+            CShotChargingStartCheck();
+            if (!cShotCharging)
             {
-                return; /// then do nothing.
+                //Debug.Log("Simple shot.");
+                Shoot();
             }
-            //Debug.Log("Simple shot.");
-            Shoot();
-        }
-    }
-
-    public void OnChargedFire(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            //Debug.Log("Charge started.");
-            charging = true;
         }
         if (context.canceled)
         {
-            //Debug.Log("Charge ended.");
-            if (chargeTime >= chargeTimeLimit)
-            {
-                ChargedShoot();
-            }
-            charging = false;
-            chargeTime = 0;
+            fireButton = false;
+            CShotChargingEndCheck();
         }
     }
+    public void OnChargedMode(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            chargedModeButton = true;
+            CShotChargingStartCheck();
+        }
+        if (context.canceled)
+        {
+            chargedModeButton = false;
+            CShotChargingEndCheck();
+        }
+    }
+
+    void CShotChargingStartCheck()
+    {
+        if (chargedModeButton && fireButton)
+        {
+            //Debug.Log("Charge started.");
+            cShotCharging = true; // Turn on charge tracker
+        }
+    }
+
+    void CShotChargingEndCheck()
+    {
+        cShotCharging = false; // Turn off charge time tracker
+        if (chargeTime >= chargeTimeLimit) //check if successful charged shot
+        {
+            //Debug.Log("Successful charged shot.");
+            ChargedShoot();
+        } // else debug log unsuccessful charged shot
+        chargeTime = 0; // then set charge time to 0
+    }
+
+
 
     void Shoot()
     {

@@ -5,18 +5,22 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
+
+    // AWAKE SETTINGS
     private Rigidbody2D rb;
     private CapsuleCollider2D coll;
     private SpriteRenderer sprite;
     private Animator anim;
 
-    [SerializeField] private LayerMask jumpableGround;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<CapsuleCollider2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+    }
 
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 7f;
-
-    // private enum MovementState { idle, jumping, falling }
-
+    // ANIMATOR CHECKS
     [SerializeField] public bool _isFacingRight = true;
     public bool IsFacingRight
     {
@@ -35,40 +39,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    [SerializeField] private bool _isMoving = false;
+    [SerializeField] private bool _isGroundMoving = false;
 
-    public bool IsMoving 
+    public bool IsGroundMoving 
     { 
         get
         {
-            return _isMoving;
+            return _isGroundMoving;
         }
         private set
         {
-            _isMoving = value;
+            _isGroundMoving = value;
             anim.SetBool("isMoving", value);
         }
     }
 
     [SerializeField] private bool _isGrounded = true;
-
-    [SerializeField] private bool _canInteract = false;
-
-    public bool canInteract
-    {
-        get
-        {
-            return _canInteract;
-        }
-        private set
-        {
-            _canInteract = value;
-            // do something here to show interact star
-        }
-    }
-
-    [SerializeField] public GameObject interactingObject = null;
-
     public bool IsGrounded
     {
         get
@@ -82,103 +68,175 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    float moveInput;
-    bool jumpInput;
+    // FIXEDUPDATE
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<CapsuleCollider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
-    }
+    [SerializeField] private LayerMask jumpableGround;
+
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float jetpackMoveSpeed = 6f;
 
     private void FixedUpdate()
     {
-        // Move horizontally based on moveInput set by OnMove
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-
         // Check if grounded
         IsGrounded = Physics2D.CapsuleCast(coll.bounds.center, coll.bounds.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.05f, jumpableGround);
 
-        if (IsGrounded)
+        if (!chargedModeButton)
         {
-            canDoubleJump = true;
+            // Move horizontally based on horizontalMoveInput set by OnMove
+            rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
+
+            if (IsGrounded)
+            {
+                canDoubleJump = true;
+            }
+
+        }
+        else
+        {
+            //Move using jetpack move
+            rb.velocity = new Vector2(moveInputVector2.x * jetpackMoveSpeed, moveInputVector2.y * jetpackMoveSpeed);
         }
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+
+    private void SetFacingDirection(float horizontalMoveInput)
     {
-        moveInput = context.ReadValue<float>();
-
-        IsMoving = moveInput != 0;
-
-        SetFacingDirection(moveInput); // Set facing direction only when movement is inputted
-    }
-
-    private void SetFacingDirection(float moveInput)
-    {
-        if (moveInput > 0 && !IsFacingRight)
+        if (horizontalMoveInput > 0 && !IsFacingRight)
         {
             IsFacingRight = true;
-        } else if (moveInput < 0 && IsFacingRight)
+        }
+        else if (horizontalMoveInput < 0 && IsFacingRight)
         {
             IsFacingRight = false;
         }
     }
 
-//double jump
-    [SerializeField] private bool _canDoubleJump = true;
+    //-----
+    //
+    // GROUND MOVEMENT WHEN NOT PRESSING CHARGED MODE BUTTON
+    //
+    //-----
 
-    public bool canDoubleJump
+    float horizontalMoveInput;
+
+    public void OnMove(InputAction.CallbackContext context)
     {
-        get
+        if (!chargedModeButton)
         {
-            return _canDoubleJump;
-        }
-        private set
-        {
-            _canDoubleJump = value;
+            horizontalMoveInput = context.ReadValue<float>();
+
+            IsGroundMoving = horizontalMoveInput != 0; // Set is ground moving for animator
+
+            SetFacingDirection(horizontalMoveInput); // Set facing direction only when movement is inputted
         }
     }
+
+//double jump
+    [SerializeField] private bool canDoubleJump = true;
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started && IsGrounded)
+        if (!chargedModeButton)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
-        // else if can double jump
-        // double jump
-        else if (context.started && canDoubleJump)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            canDoubleJump = false;
+            if (context.started && IsGrounded)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
+            // else if can double jump
+            // double jump
+            else if (context.started && canDoubleJump)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                canDoubleJump = false;
+            }
         }
     }
+
+
+    //-----
+    //
+    // JETPACK MOVEMENT WHEN PRESSING CHARGED MODE BUTTON
+    //
+    //-----
+
+    Vector2 moveInputVector2;
+
+
+    public void OnMoveVector2(InputAction.CallbackContext context)
+    {
+        if (chargedModeButton)
+        {
+            moveInputVector2 = context.ReadValue<Vector2>();
+
+            horizontalMoveInput = moveInputVector2.x;
+            SetFacingDirection(horizontalMoveInput); // Set facing direction only when movement is inputted
+
+        }
+    }
+
+
+
+    //-----
+    //
+    // MISCELLANEOUS INPUT CHECKS
+    //
+    //-----
+
+    [SerializeField] private bool _touchingInteractible = false;
+
+    public bool touchingInteractible
+    {
+        get
+        {
+            return _touchingInteractible;
+        }
+        private set
+        {
+            _touchingInteractible = value;
+            // do something here to show interact star
+        }
+    }
+
+    [SerializeField] public GameObject interactingObject = null;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //known issues: glitchy interactions if touchin 2 interactible objects at one time
         if (collision.gameObject.GetComponent<InteractionController>()) // Check if collision object has an interaction controller
         {
-            canInteract = true;
+            touchingInteractible = true;
             interactingObject = collision.gameObject;
         }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
         //known issues: glitchy interactions if touchin 2 interactible objects at one time
-        canInteract = false;
+        touchingInteractible = false;
         interactingObject = null;
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (canInteract)
+        if (touchingInteractible && IsGrounded && !chargedModeButton)
         {
             InteractionController con = interactingObject.GetComponent<InteractionController>();
             con.Interact();
+        }
+    }
+
+    [SerializeField] public bool chargedModeButton;
+
+    public void OnChargedMode(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            chargedModeButton = true;
+        }
+        if (context.canceled)
+        {
+            chargedModeButton = false;
+            moveInputVector2 = Vector2.zero;
         }
     }
 }

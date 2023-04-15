@@ -6,7 +6,7 @@
             "id": "fbdb9280-78dd-4cfc-9c21-fc465b76b570",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "MoveHorizontal",
                     "type": "Value",
                     "id": "0648b5d2-2b61-450f-9375-40e0f8d154bd",
                     "expectedControlType": "Axis",
@@ -42,13 +42,22 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChargedFire",
+                    "name": "ChargedMode",
                     "type": "Button",
-                    "id": "3bc48ee0-7f83-4098-ac7f-779c8696fbef",
+                    "id": "0189b7e2-b494-449c-b9c0-967310ad17d8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MoveVector2",
+                    "type": "Value",
+                    "id": "21d9fcc3-5316-4a3f-97cc-9d2a247b0486",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -59,7 +68,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveHorizontal",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -70,7 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveHorizontal",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -81,7 +90,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "MoveHorizontal",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -108,39 +117,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Hold 8 Press 9",
-                    "id": "d4c008d6-8ed1-4217-b99a-285e21a6867c",
-                    "path": "ButtonWithOneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChargedFire",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "button",
-                    "id": "8b82ba40-30b7-4414-b95a-a78ece51ed0d",
-                    "path": "<Keyboard>/numpad9",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ChargedFire",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "modifier",
-                    "id": "4da63371-f189-482d-b854-6ac3cd7ccdc6",
-                    "path": "<Keyboard>/numpad8",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ChargedFire",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
                     "path": "<Keyboard>/numpad9",
@@ -150,6 +126,72 @@
                     "action": "SimpleFire",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c7583dd2-006d-4f97-b4e6-78a1650802fb",
+                    "path": "<Keyboard>/numpad8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChargedMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "e8bda52f-deb3-4d87-86b6-7763cd203b5f",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveVector2",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "563b6ae0-021e-4e80-8b8d-a4e47afbdad8",
+                    "path": "<Keyboard>/numpad5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveVector2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "7c0c3be9-251d-4644-a4b1-c25440ec7b2f",
+                    "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveVector2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "031fc7f0-d175-4029-ad4e-2aa4169639ac",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveVector2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "c912850f-30bd-44b5-8cc3-f3a73b1a7d1b",
+                    "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveVector2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

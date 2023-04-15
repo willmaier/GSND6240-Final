@@ -160,17 +160,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5ab5064362980488813bcba431562a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFacingRight: 1
+  _isGroundMoving: 0
+  _isGrounded: 1
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 5
   jumpForce: 7
-  _isFacingRight: 1
-  _isMoving: 0
-  _isGrounded: 1
+  jetpackMoveSpeed: 6
+  canDoubleJump: 1
   _canInteract: 0
   interactingObject: {fileID: 0}
-  _canDoubleJump: 1
+  chargedModeButton: 0
 --- !u!114 &5102639300955335591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +191,9 @@ MonoBehaviour:
   specialShot: {fileID: 0}
   shotSpeed: 25
   chargedShotSpeed: 25
-  charging: 0
+  chargedModeButton: 0
+  fireButton: 0
+  cShotCharging: 0
   _chargeTime: 0
   chargeTimeLimit: 1
 --- !u!114 &286986702377155859
@@ -325,7 +329,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5102639300955335591}
         m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
-        m_MethodName: OnChargedFire
+        m_MethodName: OnChargedMode
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -335,8 +339,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 3bc48ee0-7f83-4098-ac7f-779c8696fbef
-    m_ActionName: Player/ChargedFire[/Keyboard/numpad9,/Keyboard/numpad8]
+      - m_Target: {fileID: 1427540412540866027}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnChargedMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0189b7e2-b494-449c-b9c0-967310ad17d8
+    m_ActionName: Player/ChargedMode[/Keyboard/numpad8]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1427540412540866027}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnMoveVector2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 21d9fcc3-5316-4a3f-97cc-9d2a247b0486
+    m_ActionName: Player/MoveDown[/Keyboard/numpad2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
