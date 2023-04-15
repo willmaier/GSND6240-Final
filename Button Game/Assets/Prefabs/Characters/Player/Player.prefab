@@ -195,7 +195,7 @@ MonoBehaviour:
   fireButton: 0
   cShotCharging: 0
   _chargeTime: 0
-  chargeTimeLimit: 1
+  chargeTimeLimit: 0.2
 --- !u!114 &286986702377155859
 MonoBehaviour:
   m_ObjectHideFlags: 0
