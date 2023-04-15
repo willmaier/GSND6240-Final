@@ -170,7 +170,7 @@ MonoBehaviour:
   jumpForce: 7
   jetpackMoveSpeed: 6
   canDoubleJump: 1
-  _canInteract: 0
+  _touchingInteractible: 0
   interactingObject: {fileID: 0}
   chargedModeButton: 0
 --- !u!114 &5102639300955335591
@@ -225,7 +225,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1427540412540866027}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnMove
+        m_MethodName: OnMoveHorizontal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -369,6 +369,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 21d9fcc3-5316-4a3f-97cc-9d2a247b0486
     m_ActionName: Player/MoveDown[/Keyboard/numpad2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1427540412540866027}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnMoveVertical
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6f5bffa8-f311-498e-a3fa-1ef4ece914c5
+    m_ActionName: Player/MoveVertical[/Keyboard/numpad2,/Keyboard/numpad5]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

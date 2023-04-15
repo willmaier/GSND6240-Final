@@ -73,10 +73,10 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MoveVector2"",
+                    ""name"": ""MoveVertical"",
                     ""type"": ""Value"",
-                    ""id"": ""21d9fcc3-5316-4a3f-97cc-9d2a247b0486"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""id"": ""6f5bffa8-f311-498e-a3fa-1ef4ece914c5"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -161,57 +161,35 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""e8bda52f-deb3-4d87-86b6-7763cd203b5f"",
-                    ""path"": ""2DVector"",
+                    ""name"": ""Numpad 25"",
+                    ""id"": ""2ca1771e-841f-4a1c-a77d-4f686d324a06"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveVector2"",
+                    ""action"": ""MoveVertical"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""563b6ae0-021e-4e80-8b8d-a4e47afbdad8"",
-                    ""path"": ""<Keyboard>/numpad5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveVector2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""7c0c3be9-251d-4644-a4b1-c25440ec7b2f"",
+                    ""name"": ""negative"",
+                    ""id"": ""089d501a-ffb1-4a9f-b964-8c47d6c8c8db"",
                     ""path"": ""<Keyboard>/numpad2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveVector2"",
+                    ""action"": ""MoveVertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""031fc7f0-d175-4029-ad4e-2aa4169639ac"",
-                    ""path"": ""<Keyboard>/numpad1"",
+                    ""name"": ""positive"",
+                    ""id"": ""b467f06c-1968-4689-acff-8b5c06e49260"",
+                    ""path"": ""<Keyboard>/numpad5"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveVector2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""c912850f-30bd-44b5-8cc3-f3a73b1a7d1b"",
-                    ""path"": ""<Keyboard>/numpad3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveVector2"",
+                    ""action"": ""MoveVertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -804,7 +782,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_SimpleFire = m_Player.FindAction("SimpleFire", throwIfNotFound: true);
         m_Player_ChargedMode = m_Player.FindAction("ChargedMode", throwIfNotFound: true);
-        m_Player_MoveVector2 = m_Player.FindAction("MoveVector2", throwIfNotFound: true);
+        m_Player_MoveVertical = m_Player.FindAction("MoveVertical", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -881,7 +859,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_SimpleFire;
     private readonly InputAction m_Player_ChargedMode;
-    private readonly InputAction m_Player_MoveVector2;
+    private readonly InputAction m_Player_MoveVertical;
     public struct PlayerActions
     {
         private @ButtonGameControls m_Wrapper;
@@ -891,7 +869,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @SimpleFire => m_Wrapper.m_Player_SimpleFire;
         public InputAction @ChargedMode => m_Wrapper.m_Player_ChargedMode;
-        public InputAction @MoveVector2 => m_Wrapper.m_Player_MoveVector2;
+        public InputAction @MoveVertical => m_Wrapper.m_Player_MoveVertical;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -916,9 +894,9 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 @ChargedMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedMode;
                 @ChargedMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedMode;
                 @ChargedMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedMode;
-                @MoveVector2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVector2;
-                @MoveVector2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVector2;
-                @MoveVector2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVector2;
+                @MoveVertical.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
+                @MoveVertical.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
+                @MoveVertical.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -938,9 +916,9 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 @ChargedMode.started += instance.OnChargedMode;
                 @ChargedMode.performed += instance.OnChargedMode;
                 @ChargedMode.canceled += instance.OnChargedMode;
-                @MoveVector2.started += instance.OnMoveVector2;
-                @MoveVector2.performed += instance.OnMoveVector2;
-                @MoveVector2.canceled += instance.OnMoveVector2;
+                @MoveVertical.started += instance.OnMoveVertical;
+                @MoveVertical.performed += instance.OnMoveVertical;
+                @MoveVertical.canceled += instance.OnMoveVertical;
             }
         }
     }
@@ -1102,7 +1080,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnSimpleFire(InputAction.CallbackContext context);
         void OnChargedMode(InputAction.CallbackContext context);
-        void OnMoveVector2(InputAction.CallbackContext context);
+        void OnMoveVertical(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

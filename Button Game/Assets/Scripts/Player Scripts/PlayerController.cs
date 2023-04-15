@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             //Move using jetpack move
-            rb.velocity = new Vector2(moveInputVector2.x * jetpackMoveSpeed, moveInputVector2.y * jetpackMoveSpeed);
+            rb.velocity = new Vector2(horizontalMoveInput * jetpackMoveSpeed, verticalMoveInput * jetpackMoveSpeed);
         }
     }
 
@@ -114,30 +114,36 @@ public class PlayerController : MonoBehaviour
 
     //-----
     //
-    // GROUND MOVEMENT WHEN NOT PRESSING CHARGED MODE BUTTON
+    // HORIZONTAL MOVEMENT
     //
     //-----
 
     float horizontalMoveInput;
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMoveHorizontal(InputAction.CallbackContext context)
     {
+        horizontalMoveInput = context.ReadValue<float>();
         if (!chargedModeButton)
         {
-            horizontalMoveInput = context.ReadValue<float>();
-
             IsGroundMoving = horizontalMoveInput != 0; // Set is ground moving for animator
-
-            SetFacingDirection(horizontalMoveInput); // Set facing direction only when movement is inputted
         }
+        else
+        {
+            IsGroundMoving = false;
+        }
+        SetFacingDirection(horizontalMoveInput); // Set facing direction only when movement is inputted
     }
 
-//double jump
+
+    // JUMP MOVEMENT
+    // 
+    // DISABLED WHEN PRESSING CHARGED MODE BUTTON
+
     [SerializeField] private bool canDoubleJump = true;
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (!chargedModeButton)
+        if (!chargedModeButton) // Disable jump when pressing down charged mode
         {
             if (context.started && IsGrounded)
             {
@@ -156,23 +162,16 @@ public class PlayerController : MonoBehaviour
 
     //-----
     //
-    // JETPACK MOVEMENT WHEN PRESSING CHARGED MODE BUTTON
+    // VERTICAL MOVEMENT WHEN PRESSING CHARGED MODE BUTTON
     //
     //-----
 
-    Vector2 moveInputVector2;
+    float verticalMoveInput;
 
 
-    public void OnMoveVector2(InputAction.CallbackContext context)
+    public void OnMoveVertical(InputAction.CallbackContext context)
     {
-        if (chargedModeButton)
-        {
-            moveInputVector2 = context.ReadValue<Vector2>();
-
-            horizontalMoveInput = moveInputVector2.x;
-            SetFacingDirection(horizontalMoveInput); // Set facing direction only when movement is inputted
-
-        }
+            verticalMoveInput = context.ReadValue<float>();
     }
 
 
@@ -236,7 +235,6 @@ public class PlayerController : MonoBehaviour
         if (context.canceled)
         {
             chargedModeButton = false;
-            moveInputVector2 = Vector2.zero;
         }
     }
 }
