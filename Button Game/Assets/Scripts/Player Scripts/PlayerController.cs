@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        jetpackRechargeSpeed = jetpackFuelLimit / jetpackRechargeTime;
+        jetpackConsumptionSpeed = jetpackFuelLimit / jetpackConsumptionTime;
+        JetpackFuel = jetpackFuelLimit;
+
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CapsuleCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -76,12 +80,61 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float jetpackMoveSpeed = 6f;
 
+    private float jetpackFuelLimit = 100;
+    [SerializeField] private float jetpackConsumptionTime = 5;
+    private float jetpackConsumptionSpeed;
+    [SerializeField] private float jetpackRechargeTime = 5;
+    private float jetpackRechargeSpeed;
+    [SerializeField] private float _jetpackFuel;
+
+    public float JetpackFuel
+    {
+        get
+        {
+            return _jetpackFuel;
+        }
+        private set
+        {
+            if (value >= jetpackFuelLimit)
+            {
+                _jetpackFuel = jetpackFuelLimit;
+            } else if (value <= 0)
+            {
+                _jetpackFuel = 0;
+            }
+            else
+            {
+                _jetpackFuel = value;
+            }
+
+        }
+    }
+
+    [SerializeField] private bool jetpackOn;
+
+    private bool canRecharge;
+
     private void FixedUpdate()
     {
         // Check if grounded
         IsGrounded = Physics2D.CapsuleCast(coll.bounds.center, coll.bounds.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.05f, jumpableGround);
 
-        if (!chargedModeButton || (verticalMoveInput == 0 && horizontalMoveInput == 0)) //If charged mode button isn't pressed, or if no input is made
+        // Check if can fly
+        // Fly only if
+        // * Pressing charged button
+        // * Jetpack has fuel
+        // * Some movement input is made
+        if (chargedModeButton && JetpackFuel > 0 && (verticalMoveInput != 0 || horizontalMoveInput != 0))
+        { jetpackOn = true; canRecharge = false; } else { jetpackOn = false;  }
+
+        if (jetpackOn)
+        {
+            //Move using jetpack move
+            rb.gravityScale = 0;
+            rb.velocity = new Vector2(horizontalMoveInput * jetpackMoveSpeed, verticalMoveInput * jetpackMoveSpeed);
+            JetpackFuel -= jetpackConsumptionSpeed * Time.deltaTime;
+        }
+        else
         {
             // Move horizontally based on horizontalMoveInput set by OnMove
             rb.gravityScale = 1;
@@ -90,14 +143,13 @@ public class PlayerController : MonoBehaviour
             if (IsGrounded)
             {
                 canDoubleJump = true;
+                canRecharge = true;
             }
-
         }
-        else //If charged mode is pressed, and that some input is made
+
+        if (canRecharge)
         {
-            //Move using jetpack move
-            rb.gravityScale = 0;
-            rb.velocity = new Vector2(horizontalMoveInput * jetpackMoveSpeed, verticalMoveInput * jetpackMoveSpeed);
+            JetpackFuel += jetpackRechargeSpeed * Time.deltaTime;
         }
     }
 

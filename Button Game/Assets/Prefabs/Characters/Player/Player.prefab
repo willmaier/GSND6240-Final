@@ -169,9 +169,12 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 7
   jetpackMoveSpeed: 6
+  jetpackConsumptionTime: 3
+  jetpackRechargeTime: 3
+  _jetpackFuel: 0
+  jetpackOn: 0
   canDoubleJump: 1
   _touchingInteractible: 0
-  interactingObject: {fileID: 0}
   chargedModeButton: 0
 --- !u!114 &5102639300955335591
 MonoBehaviour:
