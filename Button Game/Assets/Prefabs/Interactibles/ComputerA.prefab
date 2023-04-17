@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1161395460122343801}
   - component: {fileID: 1161395460122343800}
   - component: {fileID: 1161395460122343807}
-  - component: {fileID: 7074819418015086470}
   - component: {fileID: 1161395460122343806}
   m_Layer: 0
   m_Name: ComputerA
@@ -113,18 +112,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7074819418015086470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161395460122343805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e0378c3b3bdb2c49a3ecc8f00b81e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1161395460122343806
 MonoBehaviour:
   m_ObjectHideFlags: 0

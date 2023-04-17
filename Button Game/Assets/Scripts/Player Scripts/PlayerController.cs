@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
 
@@ -185,7 +186,6 @@ public class PlayerController : MonoBehaviour
     //-----
 
     [SerializeField] private bool _touchingInteractible = false;
-
     public bool touchingInteractible
     {
         get
@@ -199,34 +199,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    [SerializeField] public GameObject interactingObject = null;
+    public IInteractible interactingController;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //known issues: glitchy interactions if touchin 2 interactible objects at one time
-        if (collision.gameObject.GetComponent<InteractionController>()) // Check if collision object has an interaction controller
+        if (collision.gameObject.TryGetComponent<IInteractible>(out IInteractible inter)) // Check if collision object has an interaction controller
         {
             touchingInteractible = true;
-            interactingObject = collision.gameObject;
+            interactingController = inter;
+            // Debug Log can interact with game object
         }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
         //known issues: glitchy interactions if touchin 2 interactible objects at one time
         touchingInteractible = false;
-        interactingObject = null;
+        interactingController = null;
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (touchingInteractible && IsGrounded && !chargedModeButton)
         {
-            InteractionController con = interactingObject.GetComponent<InteractionController>();
-            con.Interact();
+            interactingController.OnInteract();
         }
     }
 
-    [SerializeField] public bool chargedModeButton;
+    [SerializeField] private bool chargedModeButton;
 
     public void OnChargedMode(InputAction.CallbackContext context)
     {
