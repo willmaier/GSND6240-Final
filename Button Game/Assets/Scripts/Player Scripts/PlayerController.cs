@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
 
@@ -208,7 +207,7 @@ public class PlayerController : MonoBehaviour
         {
             touchingInteractible = true;
             interactingController = inter;
-            // Debug Log can interact with game object
+            // Debug Log: can interact with game object
         }
     }
     public void OnTriggerExit2D(Collider2D collision)
