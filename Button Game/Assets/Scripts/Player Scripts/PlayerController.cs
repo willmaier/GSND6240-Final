@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // ANIMATOR CHECKS
-    [SerializeField] public bool _isFacingRight = true;
+    [SerializeField] private bool _isFacingRight = true;
     public bool IsFacingRight
     {
         get
@@ -161,7 +161,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     //-----
     //
     // VERTICAL MOVEMENT WHEN PRESSING CHARGED MODE BUTTON
@@ -176,8 +175,6 @@ public class PlayerController : MonoBehaviour
             verticalMoveInput = context.ReadValue<float>();
     }
 
-
-
     //-----
     //
     // MISCELLANEOUS INPUT CHECKS
@@ -185,7 +182,7 @@ public class PlayerController : MonoBehaviour
     //-----
 
     [SerializeField] private bool _touchingInteractible = false;
-    public bool touchingInteractible
+    public bool TouchingInteractible
     {
         get
         {
@@ -205,7 +202,7 @@ public class PlayerController : MonoBehaviour
         //known issues: glitchy interactions if touchin 2 interactible objects at one time
         if (collision.gameObject.TryGetComponent<IInteractible>(out IInteractible inter)) // Check if collision object has an interaction controller
         {
-            touchingInteractible = true;
+            TouchingInteractible = true;
             interactingController = inter;
             // Debug Log: can interact with game object
         }
@@ -213,13 +210,13 @@ public class PlayerController : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         //known issues: glitchy interactions if touchin 2 interactible objects at one time
-        touchingInteractible = false;
+        TouchingInteractible = false;
         interactingController = null;
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (touchingInteractible && IsGrounded && !chargedModeButton)
+        if (TouchingInteractible && IsGrounded && !chargedModeButton)
         {
             interactingController.OnInteract();
         }

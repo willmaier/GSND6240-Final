@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DoorController : MonoBehaviour, IInteractible
 {
-    [SerializeField] public string sceneToLoad;
+    [SerializeField] private string sceneToLoad;
     public void OnInteract()
     {
         Debug.Log("Loading new scene");
