@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
         jetpackRechargeSpeed = jetpackFuelLimit / jetpackRechargeTime;
         jetpackConsumptionSpeed = jetpackFuelLimit / jetpackConsumptionTime;
         JetpackFuel = jetpackFuelLimit;
+        myFuelBar.SetMaxFuel(jetpackFuelLimit);
 
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CapsuleCollider2D>();
@@ -87,6 +88,8 @@ public class PlayerController : MonoBehaviour
     private float jetpackRechargeSpeed;
     [SerializeField] private float _jetpackFuel;
 
+    [SerializeField] private FuelBar myFuelBar;
+
     public float JetpackFuel
     {
         get
@@ -151,6 +154,8 @@ public class PlayerController : MonoBehaviour
         {
             JetpackFuel += jetpackRechargeSpeed * Time.deltaTime;
         }
+
+        myFuelBar.SetFuel(JetpackFuel);
     }
 
 
