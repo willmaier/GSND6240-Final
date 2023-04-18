@@ -6,7 +6,7 @@ public class ShieldEnemy : MonoBehaviour
 {
     public GameObject shield;
 
-    bool isShielded;
+    bool isShielded = true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +22,30 @@ public class ShieldEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "ChargedShot")
+        if (collision.gameObject.tag == "ChargedBullet" && !isShielded)
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "ChargedBullet" && isShielded)
         {
             Destroy(shield);
-
+            Destroy(collision.gameObject);
+            isShielded = false;
         }
+
+        if (collision.gameObject.tag == "PlayerBullet" && !isShielded)
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "PlayerBullet" && isShielded)
+        {
+            Destroy(collision.gameObject);
+        }
+
+
     }
 }
