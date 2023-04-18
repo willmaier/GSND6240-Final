@@ -37,6 +37,15 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""MoveVertical"",
+                    ""type"": ""Value"",
+                    ""id"": ""6f5bffa8-f311-498e-a3fa-1ef4ece914c5"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""96740641-e3b0-4cb2-82a6-ca50bbd74f02"",
@@ -71,20 +80,11 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MoveVertical"",
-                    ""type"": ""Value"",
-                    ""id"": ""6f5bffa8-f311-498e-a3fa-1ef4ece914c5"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Numpad 13"",
+                    ""name"": ""BM"",
                     ""id"": ""00ca640b-d935-4593-8157-c05846ea39b3"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -97,7 +97,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Negative"",
                     ""id"": ""e2062cb9-1b15-46a2-838c-2f8d72a0bdd9"",
-                    ""path"": ""<Keyboard>/numpad1"",
+                    ""path"": ""<Keyboard>/b"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -108,7 +108,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Positive"",
                     ""id"": ""8180e8bd-4097-4f4e-ab88-4523101a6ce9"",
-                    ""path"": ""<Keyboard>/numpad3"",
+                    ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -119,7 +119,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""41ea3635-907b-4ea5-a315-95857e7b7542"",
-                    ""path"": ""<Keyboard>/numpad5"",
+                    ""path"": ""<Keyboard>/h"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -130,7 +130,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7f5df2ac-1850-4889-ab1c-4b4ad7fdb020"",
-                    ""path"": ""<Keyboard>/numpad2"",
+                    ""path"": ""<Keyboard>/n"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -141,7 +141,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Keyboard>/numpad9"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -151,8 +151,30 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""9dcf8433-23cd-4fa5-a203-2c3b613b41af"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SimpleFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89bbf1d8-34e9-46f9-8b79-8441ee56a026"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SimpleFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c7583dd2-006d-4f97-b4e6-78a1650802fb"",
-                    ""path"": ""<Keyboard>/numpad8"",
+                    ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -161,7 +183,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Numpad 25"",
+                    ""name"": ""HN"",
                     ""id"": ""2ca1771e-841f-4a1c-a77d-4f686d324a06"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -174,10 +196,10 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""089d501a-ffb1-4a9f-b964-8c47d6c8c8db"",
-                    ""path"": ""<Keyboard>/numpad2"",
+                    ""path"": ""<Keyboard>/n"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""MoveVertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -185,10 +207,10 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""b467f06c-1968-4689-acff-8b5c06e49260"",
-                    ""path"": ""<Keyboard>/numpad5"",
+                    ""path"": ""<Keyboard>/h"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""MoveVertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -778,11 +800,11 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MoveHorizontal = m_Player.FindAction("MoveHorizontal", throwIfNotFound: true);
+        m_Player_MoveVertical = m_Player.FindAction("MoveVertical", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_SimpleFire = m_Player.FindAction("SimpleFire", throwIfNotFound: true);
         m_Player_ChargedMode = m_Player.FindAction("ChargedMode", throwIfNotFound: true);
-        m_Player_MoveVertical = m_Player.FindAction("MoveVertical", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -855,21 +877,21 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_MoveHorizontal;
+    private readonly InputAction m_Player_MoveVertical;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_SimpleFire;
     private readonly InputAction m_Player_ChargedMode;
-    private readonly InputAction m_Player_MoveVertical;
     public struct PlayerActions
     {
         private @ButtonGameControls m_Wrapper;
         public PlayerActions(@ButtonGameControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveHorizontal => m_Wrapper.m_Player_MoveHorizontal;
+        public InputAction @MoveVertical => m_Wrapper.m_Player_MoveVertical;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @SimpleFire => m_Wrapper.m_Player_SimpleFire;
         public InputAction @ChargedMode => m_Wrapper.m_Player_ChargedMode;
-        public InputAction @MoveVertical => m_Wrapper.m_Player_MoveVertical;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -882,6 +904,9 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 @MoveHorizontal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
                 @MoveHorizontal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
                 @MoveHorizontal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
+                @MoveVertical.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
+                @MoveVertical.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
+                @MoveVertical.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
@@ -894,9 +919,6 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 @ChargedMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedMode;
                 @ChargedMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedMode;
                 @ChargedMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedMode;
-                @MoveVertical.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
-                @MoveVertical.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
-                @MoveVertical.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -904,6 +926,9 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 @MoveHorizontal.started += instance.OnMoveHorizontal;
                 @MoveHorizontal.performed += instance.OnMoveHorizontal;
                 @MoveHorizontal.canceled += instance.OnMoveHorizontal;
+                @MoveVertical.started += instance.OnMoveVertical;
+                @MoveVertical.performed += instance.OnMoveVertical;
+                @MoveVertical.canceled += instance.OnMoveVertical;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -916,9 +941,6 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 @ChargedMode.started += instance.OnChargedMode;
                 @ChargedMode.performed += instance.OnChargedMode;
                 @ChargedMode.canceled += instance.OnChargedMode;
-                @MoveVertical.started += instance.OnMoveVertical;
-                @MoveVertical.performed += instance.OnMoveVertical;
-                @MoveVertical.canceled += instance.OnMoveVertical;
             }
         }
     }
@@ -1076,11 +1098,11 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMoveHorizontal(InputAction.CallbackContext context);
+        void OnMoveVertical(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnSimpleFire(InputAction.CallbackContext context);
         void OnChargedMode(InputAction.CallbackContext context);
-        void OnMoveVertical(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

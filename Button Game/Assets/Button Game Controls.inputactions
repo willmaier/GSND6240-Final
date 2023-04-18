@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "MoveVertical",
+                    "type": "Value",
+                    "id": "6f5bffa8-f311-498e-a3fa-1ef4ece914c5",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "96740641-e3b0-4cb2-82a6-ca50bbd74f02",
@@ -49,20 +58,11 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "MoveVertical",
-                    "type": "Value",
-                    "id": "6f5bffa8-f311-498e-a3fa-1ef4ece914c5",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "Numpad 13",
+                    "name": "BM",
                     "id": "00ca640b-d935-4593-8157-c05846ea39b3",
                     "path": "1DAxis",
                     "interactions": "",
@@ -75,7 +75,7 @@
                 {
                     "name": "Negative",
                     "id": "e2062cb9-1b15-46a2-838c-2f8d72a0bdd9",
-                    "path": "<Keyboard>/numpad1",
+                    "path": "<Keyboard>/b",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -86,7 +86,7 @@
                 {
                     "name": "Positive",
                     "id": "8180e8bd-4097-4f4e-ab88-4523101a6ce9",
-                    "path": "<Keyboard>/numpad3",
+                    "path": "<Keyboard>/m",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -97,7 +97,7 @@
                 {
                     "name": "",
                     "id": "41ea3635-907b-4ea5-a315-95857e7b7542",
-                    "path": "<Keyboard>/numpad5",
+                    "path": "<Keyboard>/h",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -108,7 +108,7 @@
                 {
                     "name": "",
                     "id": "7f5df2ac-1850-4889-ab1c-4b4ad7fdb020",
-                    "path": "<Keyboard>/numpad2",
+                    "path": "<Keyboard>/n",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -119,7 +119,7 @@
                 {
                     "name": "",
                     "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Keyboard>/numpad9",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -129,8 +129,30 @@
                 },
                 {
                     "name": "",
+                    "id": "9dcf8433-23cd-4fa5-a203-2c3b613b41af",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SimpleFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89bbf1d8-34e9-46f9-8b79-8441ee56a026",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SimpleFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c7583dd2-006d-4f97-b4e6-78a1650802fb",
-                    "path": "<Keyboard>/numpad8",
+                    "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -139,7 +161,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Numpad 25",
+                    "name": "HN",
                     "id": "2ca1771e-841f-4a1c-a77d-4f686d324a06",
                     "path": "1DAxis",
                     "interactions": "",
@@ -152,10 +174,10 @@
                 {
                     "name": "negative",
                     "id": "089d501a-ffb1-4a9f-b964-8c47d6c8c8db",
-                    "path": "<Keyboard>/numpad2",
+                    "path": "<Keyboard>/n",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "MoveVertical",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -163,10 +185,10 @@
                 {
                     "name": "positive",
                     "id": "b467f06c-1968-4689-acff-8b5c06e49260",
-                    "path": "<Keyboard>/numpad5",
+                    "path": "<Keyboard>/h",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "MoveVertical",
                     "isComposite": false,
                     "isPartOfComposite": true
