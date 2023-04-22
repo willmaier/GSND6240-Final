@@ -114,7 +114,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Negative"",
                     ""id"": ""67f2c5b1-ef89-46a1-a088-65dc6f836169"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -125,7 +125,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Positive"",
                     ""id"": ""78999f6f-af51-4170-9310-c2eb5906762d"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
