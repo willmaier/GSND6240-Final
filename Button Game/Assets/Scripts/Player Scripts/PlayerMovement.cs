@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // ANIMATOR CHECKS
-    [SerializeField] private bool _isFacingRight = true;
+    private bool _isFacingRight = true;
     public bool IsFacingRight
     {
         get
@@ -40,8 +40,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    [SerializeField] private bool _isGroundMoving = false;
-
+    private bool _isGroundMoving = false;
     public bool IsGroundMoving
     {
         get
@@ -55,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    [SerializeField] private bool _isGrounded = true;
+    private bool _isGrounded = true;
     public bool IsGrounded
     {
         get
@@ -108,9 +107,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    [SerializeField] private bool jetpackOn;
-
-    private float chargingStatus = 0;
+    private bool jetpackOn;
 
     private void FixedUpdate()
     {
@@ -120,8 +117,6 @@ public class PlayerMovement : MonoBehaviour
         // Check if jetpack on
         if (jetpackButton && JetpackFuel > 0)
         { jetpackOn = true; } else { jetpackOn = false; }
-
-        SetJetpackCharging();
 
         //Horizontal move
         rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
@@ -133,11 +128,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Recharge or consume jetpack
+        SetJetpackCharging();
         JetpackFuel += jetpackConsumptionRechargeSpeed * Time.deltaTime * chargingStatus;
-
         myFuelBar.SetFuel(JetpackFuel);
     }
 
+    private float chargingStatus = 0;
     private void SetJetpackCharging()
     {
         // Check if can recharge jetpack
@@ -171,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    [SerializeField] private float horizontalMoveInput;
+    private float horizontalMoveInput;
 
     public void OnMoveHorizontal(InputAction.CallbackContext context)
     {
@@ -188,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //    [SerializeField] private bool canDoubleJump = true;
-    [SerializeField] private float verticalMoveInput;
+    private float verticalMoveInput;
 
     public void OnMoveUp(InputAction.CallbackContext context)
     {
@@ -208,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
         }
         */
 
-    [SerializeField] private bool jetpackButton = false;
+    private bool jetpackButton = false;
 
     public void OnJetpackButton(InputAction.CallbackContext context)
     {
@@ -222,66 +218,52 @@ public class PlayerMovement : MonoBehaviour
             jetpackButton = false;
         }
     }
+}
 
-    /*
-    
-    Scrapped Interaction
-    ----
+/*
 
-    [SerializeField] private bool _touchingInteractible = false;
-    public bool TouchingInteractible
+Scrapped Interaction
+----
+
+[SerializeField] private bool _touchingInteractible = false;
+public bool TouchingInteractible
+{
+    get
     {
-        get
-        {
-            return _touchingInteractible;
-        }
-        private set
-        {
-            _touchingInteractible = value;
-            // do something here to show interact star
-        }
+        return _touchingInteractible;
     }
-
-    public IInteractible interactingController;
-
-    public void OnTriggerEnter2D(Collider2D collision)
+    private set
     {
-        //known issues: glitchy interactions if touchin 2 interactible objects at one time
-        if (collision.gameObject.TryGetComponent<IInteractible>(out IInteractible inter)) // Check if collision object has an interaction controller
-        {
-            TouchingInteractible = true;
-            interactingController = inter;
-            // Debug Log: can interact with game object
-        }
+        _touchingInteractible = value;
+        // do something here to show interact star
     }
-    public void OnTriggerExit2D(Collider2D collision)
+}
+
+public IInteractible interactingController;
+
+public void OnTriggerEnter2D(Collider2D collision)
+{
+    //known issues: glitchy interactions if touchin 2 interactible objects at one time
+    if (collision.gameObject.TryGetComponent<IInteractible>(out IInteractible inter)) // Check if collision object has an interaction controller
     {
-        //known issues: glitchy interactions if touchin 2 interactible objects at one time
-        TouchingInteractible = false;
-        interactingController = null;
+        TouchingInteractible = true;
+        interactingController = inter;
+        // Debug Log: can interact with game object
     }
+}
+public void OnTriggerExit2D(Collider2D collision)
+{
+    //known issues: glitchy interactions if touchin 2 interactible objects at one time
+    TouchingInteractible = false;
+    interactingController = null;
+}
 
-     public void OnInteract(InputAction.CallbackContext context)
+ public void OnInteract(InputAction.CallbackContext context)
+{
+    if (TouchingInteractible && IsGrounded && !chargedModeButton)
     {
-        if (TouchingInteractible && IsGrounded && !chargedModeButton)
-        {
-            interactingController.OnInteract();
-        }
+        interactingController.OnInteract();
     }
-
-
-    ----
-    Scrapped Vertical Axis Input
-    ----
-    
-    float verticalMoveInput;
-
-    public void OnMoveVertical(InputAction.CallbackContext context)
-    {
-        verticalMoveInput = context.ReadValue<float>();
-    }
+}
 
 */
-
-
-}

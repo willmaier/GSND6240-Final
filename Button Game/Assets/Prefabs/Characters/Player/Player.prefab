@@ -161,22 +161,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5ab5064362980488813bcba431562a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isFacingRight: 1
-  _isGroundMoving: 0
-  _isGrounded: 1
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 5
   jumpForce: 7
   jetpackMoveSpeed: 6
-  jetpackConsumptionRechargeTime: 5
+  jetpackConsumptionRechargeTime: 2
   _jetpackFuel: 0
   myFuelBar: {fileID: 0}
-  jetpackOn: 0
-  horizontalMoveInput: 0
-  verticalMoveInput: 0
-  jetpackButton: 0
 --- !u!114 &5102639300955335591
 MonoBehaviour:
   m_ObjectHideFlags: 0
