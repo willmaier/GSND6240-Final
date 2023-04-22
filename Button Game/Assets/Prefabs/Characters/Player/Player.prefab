@@ -170,11 +170,12 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 7
   jetpackMoveSpeed: 6
-  jetpackConsumptionTime: 3
-  jetpackRechargeTime: 3
+  jetpackConsumptionRechargeTime: 5
   _jetpackFuel: 0
   myFuelBar: {fileID: 0}
   jetpackOn: 0
+  horizontalMoveInput: 0
+  verticalMoveInput: 0
   jetpackButton: 0
 --- !u!114 &5102639300955335591
 MonoBehaviour:
@@ -343,12 +344,40 @@ MonoBehaviour:
     m_ActionId: ba1ee8a4-8589-41f9-8413-abb3aef09224
     m_ActionName: PlayerControllerBlue/MoveHorizontal[/Keyboard/n,/Keyboard/m]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2bdb6846-7c7f-4de1-b151-6b9311ce7f82
-    m_ActionName: PlayerControllerRed/SimpleFire[/Keyboard/f]
+      m_Calls:
+      - m_Target: {fileID: 5102639300955335591}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: OnChargedMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 60b0d482-1d67-40a7-a1d6-a67684d0d93b
+    m_ActionName: Player/ChargeShot[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5102639300955335591}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: OnSimpleFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 75502c6e-e2d5-42ab-b0c0-5b2f15918c3a
+    m_ActionName: Player/SimpleFire[/Keyboard/g]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerControllerBlue
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &5186321126485835718

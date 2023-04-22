@@ -2,7 +2,7 @@
     "name": "Button Game Controls",
     "maps": [
         {
-            "name": "PlayerControllerBlue",
+            "name": "Player",
             "id": "1cf0a5b9-fae3-4e60-b3d9-eea1a94b5e03",
             "actions": [
                 {
@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ChargeShot",
+                    "type": "Button",
+                    "id": "60b0d482-1d67-40a7-a1d6-a67684d0d93b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SimpleFire",
+                    "type": "Button",
+                    "id": "75502c6e-e2d5-42ab-b0c0-5b2f15918c3a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -121,32 +139,26 @@
                     "action": "MoveUp",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "PlayerControllerRed",
-            "id": "40f68855-e97d-4d41-8916-ad40cc5bab7b",
-            "actions": [
-                {
-                    "name": "SimpleFire",
-                    "type": "Button",
-                    "id": "2bdb6846-7c7f-4de1-b151-6b9311ce7f82",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "f529f3a5-1439-4c75-9448-08d5cd55325a",
-                    "path": "<Keyboard>/f",
+                    "id": "b4d28d46-394c-4fa2-b753-6dad469f01c2",
+                    "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "SimpleFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be3bd71e-4aa6-4713-8fff-7a57334197b2",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChargeShot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -24,7 +24,7 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
     ""name"": ""Button Game Controls"",
     ""maps"": [
         {
-            ""name"": ""PlayerControllerBlue"",
+            ""name"": ""Player"",
             ""id"": ""1cf0a5b9-fae3-4e60-b3d9-eea1a94b5e03"",
             ""actions"": [
                 {
@@ -53,6 +53,24 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChargeShot"",
+                    ""type"": ""Button"",
+                    ""id"": ""60b0d482-1d67-40a7-a1d6-a67684d0d93b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SimpleFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""75502c6e-e2d5-42ab-b0c0-5b2f15918c3a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -143,32 +161,26 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""action"": ""MoveUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""PlayerControllerRed"",
-            ""id"": ""40f68855-e97d-4d41-8916-ad40cc5bab7b"",
-            ""actions"": [
-                {
-                    ""name"": ""SimpleFire"",
-                    ""type"": ""Button"",
-                    ""id"": ""2bdb6846-7c7f-4de1-b151-6b9311ce7f82"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""f529f3a5-1439-4c75-9448-08d5cd55325a"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""id"": ""b4d28d46-394c-4fa2-b753-6dad469f01c2"",
+                    ""path"": ""<Keyboard>/g"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""SimpleFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be3bd71e-4aa6-4713-8fff-7a57334197b2"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChargeShot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -782,14 +794,13 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // PlayerControllerBlue
-        m_PlayerControllerBlue = asset.FindActionMap("PlayerControllerBlue", throwIfNotFound: true);
-        m_PlayerControllerBlue_Jetpack = m_PlayerControllerBlue.FindAction("Jetpack", throwIfNotFound: true);
-        m_PlayerControllerBlue_MoveUp = m_PlayerControllerBlue.FindAction("MoveUp", throwIfNotFound: true);
-        m_PlayerControllerBlue_MoveHorizontal = m_PlayerControllerBlue.FindAction("MoveHorizontal", throwIfNotFound: true);
-        // PlayerControllerRed
-        m_PlayerControllerRed = asset.FindActionMap("PlayerControllerRed", throwIfNotFound: true);
-        m_PlayerControllerRed_SimpleFire = m_PlayerControllerRed.FindAction("SimpleFire", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Jetpack = m_Player.FindAction("Jetpack", throwIfNotFound: true);
+        m_Player_MoveUp = m_Player.FindAction("MoveUp", throwIfNotFound: true);
+        m_Player_MoveHorizontal = m_Player.FindAction("MoveHorizontal", throwIfNotFound: true);
+        m_Player_ChargeShot = m_Player.FindAction("ChargeShot", throwIfNotFound: true);
+        m_Player_SimpleFire = m_Player.FindAction("SimpleFire", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -861,39 +872,49 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PlayerControllerBlue
-    private readonly InputActionMap m_PlayerControllerBlue;
-    private IPlayerControllerBlueActions m_PlayerControllerBlueActionsCallbackInterface;
-    private readonly InputAction m_PlayerControllerBlue_Jetpack;
-    private readonly InputAction m_PlayerControllerBlue_MoveUp;
-    private readonly InputAction m_PlayerControllerBlue_MoveHorizontal;
-    public struct PlayerControllerBlueActions
+    // Player
+    private readonly InputActionMap m_Player;
+    private IPlayerActions m_PlayerActionsCallbackInterface;
+    private readonly InputAction m_Player_Jetpack;
+    private readonly InputAction m_Player_MoveUp;
+    private readonly InputAction m_Player_MoveHorizontal;
+    private readonly InputAction m_Player_ChargeShot;
+    private readonly InputAction m_Player_SimpleFire;
+    public struct PlayerActions
     {
         private @ButtonGameControls m_Wrapper;
-        public PlayerControllerBlueActions(@ButtonGameControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Jetpack => m_Wrapper.m_PlayerControllerBlue_Jetpack;
-        public InputAction @MoveUp => m_Wrapper.m_PlayerControllerBlue_MoveUp;
-        public InputAction @MoveHorizontal => m_Wrapper.m_PlayerControllerBlue_MoveHorizontal;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerControllerBlue; }
+        public PlayerActions(@ButtonGameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Jetpack => m_Wrapper.m_Player_Jetpack;
+        public InputAction @MoveUp => m_Wrapper.m_Player_MoveUp;
+        public InputAction @MoveHorizontal => m_Wrapper.m_Player_MoveHorizontal;
+        public InputAction @ChargeShot => m_Wrapper.m_Player_ChargeShot;
+        public InputAction @SimpleFire => m_Wrapper.m_Player_SimpleFire;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerControllerBlueActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerControllerBlueActions instance)
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerActions instance)
         {
-            if (m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Jetpack.started -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnJetpack;
-                @Jetpack.performed -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnJetpack;
-                @Jetpack.canceled -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnJetpack;
-                @MoveUp.started -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveUp;
-                @MoveUp.performed -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveUp;
-                @MoveUp.canceled -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveUp;
-                @MoveHorizontal.started -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveHorizontal;
-                @MoveHorizontal.performed -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveHorizontal;
-                @MoveHorizontal.canceled -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveHorizontal;
+                @Jetpack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJetpack;
+                @Jetpack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJetpack;
+                @Jetpack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJetpack;
+                @MoveUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveUp;
+                @MoveUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveUp;
+                @MoveUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveUp;
+                @MoveHorizontal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
+                @MoveHorizontal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
+                @MoveHorizontal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
+                @ChargeShot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargeShot;
+                @ChargeShot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargeShot;
+                @ChargeShot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargeShot;
+                @SimpleFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
+                @SimpleFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
+                @SimpleFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
             }
-            m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Jetpack.started += instance.OnJetpack;
@@ -905,43 +926,16 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 @MoveHorizontal.started += instance.OnMoveHorizontal;
                 @MoveHorizontal.performed += instance.OnMoveHorizontal;
                 @MoveHorizontal.canceled += instance.OnMoveHorizontal;
-            }
-        }
-    }
-    public PlayerControllerBlueActions @PlayerControllerBlue => new PlayerControllerBlueActions(this);
-
-    // PlayerControllerRed
-    private readonly InputActionMap m_PlayerControllerRed;
-    private IPlayerControllerRedActions m_PlayerControllerRedActionsCallbackInterface;
-    private readonly InputAction m_PlayerControllerRed_SimpleFire;
-    public struct PlayerControllerRedActions
-    {
-        private @ButtonGameControls m_Wrapper;
-        public PlayerControllerRedActions(@ButtonGameControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @SimpleFire => m_Wrapper.m_PlayerControllerRed_SimpleFire;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerControllerRed; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerControllerRedActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerControllerRedActions instance)
-        {
-            if (m_Wrapper.m_PlayerControllerRedActionsCallbackInterface != null)
-            {
-                @SimpleFire.started -= m_Wrapper.m_PlayerControllerRedActionsCallbackInterface.OnSimpleFire;
-                @SimpleFire.performed -= m_Wrapper.m_PlayerControllerRedActionsCallbackInterface.OnSimpleFire;
-                @SimpleFire.canceled -= m_Wrapper.m_PlayerControllerRedActionsCallbackInterface.OnSimpleFire;
-            }
-            m_Wrapper.m_PlayerControllerRedActionsCallbackInterface = instance;
-            if (instance != null)
-            {
+                @ChargeShot.started += instance.OnChargeShot;
+                @ChargeShot.performed += instance.OnChargeShot;
+                @ChargeShot.canceled += instance.OnChargeShot;
                 @SimpleFire.started += instance.OnSimpleFire;
                 @SimpleFire.performed += instance.OnSimpleFire;
                 @SimpleFire.canceled += instance.OnSimpleFire;
             }
         }
     }
-    public PlayerControllerRedActions @PlayerControllerRed => new PlayerControllerRedActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1125,14 +1119,12 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_XRSchemeIndex];
         }
     }
-    public interface IPlayerControllerBlueActions
+    public interface IPlayerActions
     {
         void OnJetpack(InputAction.CallbackContext context);
         void OnMoveUp(InputAction.CallbackContext context);
         void OnMoveHorizontal(InputAction.CallbackContext context);
-    }
-    public interface IPlayerControllerRedActions
-    {
+        void OnChargeShot(InputAction.CallbackContext context);
         void OnSimpleFire(InputAction.CallbackContext context);
     }
     public interface IUIActions
