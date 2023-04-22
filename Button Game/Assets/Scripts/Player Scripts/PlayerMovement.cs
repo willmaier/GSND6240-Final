@@ -107,8 +107,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool jetpackOn;
+    private bool _jetpackOn;
 
+    public bool JetpackOn 
+    {
+        get
+        {
+            return _jetpackOn;
+        }
+        private set
+        {
+            _jetpackOn = value;
+            anim.SetBool("jetpackOn", value);
+        }
+    }
     private void FixedUpdate()
     {
         // Check if grounded
@@ -116,12 +128,12 @@ public class PlayerMovement : MonoBehaviour
 
         // Check if jetpack on
         if (jetpackButton && JetpackFuel > 0)
-        { jetpackOn = true; } else { jetpackOn = false; }
+        { JetpackOn = true; } else { JetpackOn = false; }
 
         //Horizontal move
         rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
 
-        if (jetpackOn)
+        if (JetpackOn)
         {
             //Move using jetpack
             rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * jetpackMoveSpeed);
@@ -137,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
     private void SetJetpackCharging()
     {
         // Check if can recharge jetpack
-        if (jetpackOn) 
+        if (JetpackOn) 
         {
             chargingStatus = -1; // Draining
             return;
