@@ -173,10 +173,9 @@ MonoBehaviour:
   jetpackConsumptionTime: 3
   jetpackRechargeTime: 3
   _jetpackFuel: 0
+  myFuelBar: {fileID: 0}
   jetpackOn: 0
-  canDoubleJump: 1
-  _touchingInteractible: 0
-  chargedModeButton: 0
+  jetpackButton: 0
 --- !u!114 &5102639300955335591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,54 +242,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1427540412540866027}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnMoveHorizontal
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 0648b5d2-2b61-450f-9375-40e0f8d154bd
-    m_ActionName: Player/Move[/Keyboard/numpad1,/Keyboard/numpad3]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5102639300955335591}
-        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
-        m_MethodName: OnSimpleFire
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 244a0119-b8a3-46cf-a5d9-dd0e5345675a
-    m_ActionName: Player/Fire[/Keyboard/numpad9]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1427540412540866027}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 96740641-e3b0-4cb2-82a6-ca50bbd74f02
-    m_ActionName: Player/Jump[/Keyboard/numpad5]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1427540412540866027}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
@@ -345,21 +296,9 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5102639300955335591}
-        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
-        m_MethodName: OnChargedMode
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1427540412540866027}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnChargedMode
+        m_TargetAssemblyTypeName: PlayerControlBlueMovement, Assembly-CSharp
+        m_MethodName: OnJetpackButton
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -369,13 +308,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 0189b7e2-b494-449c-b9c0-967310ad17d8
-    m_ActionName: Player/ChargedMode[/Keyboard/numpad8]
+    m_ActionId: 0c7b2772-3976-416d-98e0-53b7c0afb0f5
+    m_ActionName: PlayerControllerBlue/Jetpack[/Keyboard/v]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1427540412540866027}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnMoveVertical
+        m_TargetAssemblyTypeName: PlayerControlBlueMovement, Assembly-CSharp
+        m_MethodName: OnMoveUp
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -385,11 +324,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 6f5bffa8-f311-498e-a3fa-1ef4ece914c5
-    m_ActionName: Player/MoveVertical[/Keyboard/numpad2,/Keyboard/numpad5]
+    m_ActionId: 79b61e46-6c4e-4062-8ba8-3acc5e1bb894
+    m_ActionName: PlayerControllerBlue/MoveUp[/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1427540412540866027}
+        m_TargetAssemblyTypeName: PlayerControlBlueMovement, Assembly-CSharp
+        m_MethodName: OnMoveHorizontal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ba1ee8a4-8589-41f9-8413-abb3aef09224
+    m_ActionName: PlayerControllerBlue/MoveHorizontal[/Keyboard/n,/Keyboard/m]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2bdb6846-7c7f-4de1-b151-6b9311ce7f82
+    m_ActionName: PlayerControllerRed/SimpleFire[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: PlayerControllerBlue
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &5186321126485835718

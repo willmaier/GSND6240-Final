@@ -3,25 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerController : MonoBehaviour
+public class PlayerControlBlueMovement : MonoBehaviour
 {
-
     // AWAKE SETTINGS
     private Rigidbody2D rb;
     private CapsuleCollider2D coll;
-    private SpriteRenderer sprite;
     private Animator anim;
 
     private void Awake()
     {
-        jetpackRechargeSpeed = jetpackFuelLimit / jetpackRechargeTime;
-        jetpackConsumptionSpeed = jetpackFuelLimit / jetpackConsumptionTime;
+        jetpackConsumptionRechargeSpeed = jetpackFuelLimit / jetpackConsumptionRechargeTime;
         JetpackFuel = jetpackFuelLimit;
         myFuelBar.SetMaxFuel(jetpackFuelLimit);
 
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CapsuleCollider2D>();
-        sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 
@@ -46,8 +42,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool _isGroundMoving = false;
 
-    public bool IsGroundMoving 
-    { 
+    public bool IsGroundMoving
+    {
         get
         {
             return _isGroundMoving;
@@ -81,11 +77,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float jetpackMoveSpeed = 6f;
 
-    private float jetpackFuelLimit = 100;
-    [SerializeField] private float jetpackConsumptionTime = 5;
-    private float jetpackConsumptionSpeed;
-    [SerializeField] private float jetpackRechargeTime = 5;
-    private float jetpackRechargeSpeed;
+    private static float jetpackFuelLimit = 100;
+    [SerializeField] private float jetpackConsumptionRechargeTime = 5;
+    private float jetpackConsumptionRechargeSpeed;
     [SerializeField] private float _jetpackFuel;
 
     [SerializeField] private FuelBar myFuelBar;
@@ -101,7 +95,8 @@ public class PlayerController : MonoBehaviour
             if (value >= jetpackFuelLimit)
             {
                 _jetpackFuel = jetpackFuelLimit;
-            } else if (value <= 0)
+            }
+            else if (value <= 0)
             {
                 _jetpackFuel = 0;
             }
@@ -115,49 +110,54 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool jetpackOn;
 
-    private bool canRecharge;
+    private float chargingStatus = 0;
 
     private void FixedUpdate()
     {
         // Check if grounded
         IsGrounded = Physics2D.CapsuleCast(coll.bounds.center, coll.bounds.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.05f, jumpableGround);
 
-        // Check if can fly
-        // Fly only if
-        // * Pressing charged button
-        // * Jetpack has fuel
-        // * Some movement input is made
-        if (chargedModeButton && JetpackFuel > 0 && (verticalMoveInput != 0 || horizontalMoveInput != 0))
-        { jetpackOn = true; canRecharge = false; } else { jetpackOn = false;  }
+        // Check if jetpack on
+        if (jetpackButton && JetpackFuel > 0)
+        { jetpackOn = true; } else { jetpackOn = false; }
+
+        SetJetpackCharging();
+
+        //Horizontal move
+        rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
 
         if (jetpackOn)
         {
-            //Move using jetpack move
-            rb.gravityScale = 0;
-            rb.velocity = new Vector2(horizontalMoveInput * jetpackMoveSpeed, verticalMoveInput * jetpackMoveSpeed);
-            JetpackFuel -= jetpackConsumptionSpeed * Time.deltaTime;
-        }
-        else
-        {
-            // Move horizontally based on horizontalMoveInput set by OnMove
-            rb.gravityScale = 1;
-            rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
-
-            if (IsGrounded)
-            {
-                canDoubleJump = true;
-                canRecharge = true;
-            }
+            //Move using jetpack
+            rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * jetpackMoveSpeed);
         }
 
-        if (canRecharge)
-        {
-            JetpackFuel += jetpackRechargeSpeed * Time.deltaTime;
-        }
+        // Recharge or consume jetpack
+        JetpackFuel += jetpackConsumptionRechargeSpeed * Time.deltaTime * chargingStatus;
 
         myFuelBar.SetFuel(JetpackFuel);
     }
 
+    private void SetJetpackCharging()
+    {
+        // Check if can recharge jetpack
+        if (jetpackOn) 
+        {
+            chargingStatus = -1; // Draining
+            return;
+        } 
+
+        if (IsGrounded) 
+        { 
+            chargingStatus = 1; // Charging
+            return;
+        }  // also scrapped double jump var: canDoubleJump = true;
+
+        if (!IsGrounded && chargingStatus != 1)
+        {
+            chargingStatus = 0; // Maintaining
+        } 
+    }
 
     private void SetFacingDirection(float horizontalMoveInput)
     {
@@ -171,18 +171,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //-----
-    //
-    // HORIZONTAL MOVEMENT
-    //
-    //-----
-
-    float horizontalMoveInput;
+    [SerializeField] private float horizontalMoveInput;
 
     public void OnMoveHorizontal(InputAction.CallbackContext context)
     {
         horizontalMoveInput = context.ReadValue<float>();
-        if (!chargedModeButton)
+        if (!jetpackButton)
         {
             IsGroundMoving = horizontalMoveInput != 0; // Set is ground moving for animator
         }
@@ -193,50 +187,46 @@ public class PlayerController : MonoBehaviour
         SetFacingDirection(horizontalMoveInput); // Set facing direction only when movement is inputted
     }
 
+    //    [SerializeField] private bool canDoubleJump = true;
+    [SerializeField] private float verticalMoveInput;
 
-    // JUMP MOVEMENT
-    // 
-    // DISABLED WHEN PRESSING CHARGED MODE BUTTON
-
-    [SerializeField] private bool canDoubleJump = true;
-
-    public void OnJump(InputAction.CallbackContext context)
+    public void OnMoveUp(InputAction.CallbackContext context)
     {
-        if (!chargedModeButton) // Disable jump when pressing down charged mode
+        verticalMoveInput = context.ReadValue<float>();
+
+        if (context.started && IsGrounded)
         {
-            if (context.started && IsGrounded)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
-            // else if can double jump
-            // double jump
-            else if (context.started && canDoubleJump)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                canDoubleJump = false;
-            }
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce); //Jump
         }
     }
 
-    //-----
-    //
-    // VERTICAL MOVEMENT WHEN PRESSING CHARGED MODE BUTTON
-    //
-    //-----
+        /* Scrapped double jump
+        if (context.started && canDoubleJump)
+        {
+          rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+          canDoubleJump = false;
+        }
+        */
 
-    float verticalMoveInput;
+    [SerializeField] private bool jetpackButton = false;
 
-
-    public void OnMoveVertical(InputAction.CallbackContext context)
+    public void OnJetpackButton(InputAction.CallbackContext context)
     {
-            verticalMoveInput = context.ReadValue<float>();
+        // "Hold"-type on-off switch
+        if (context.started)
+        {
+            jetpackButton = true;
+        }
+        if (context.canceled)
+        {
+            jetpackButton = false;
+        }
     }
 
-    //-----
-    //
-    // MISCELLANEOUS INPUT CHECKS
-    //
-    //-----
+    /*
+    
+    Scrapped Interaction
+    ----
 
     [SerializeField] private bool _touchingInteractible = false;
     public bool TouchingInteractible
@@ -271,7 +261,7 @@ public class PlayerController : MonoBehaviour
         interactingController = null;
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
+     public void OnInteract(InputAction.CallbackContext context)
     {
         if (TouchingInteractible && IsGrounded && !chargedModeButton)
         {
@@ -279,17 +269,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    [SerializeField] private bool chargedModeButton;
 
-    public void OnChargedMode(InputAction.CallbackContext context)
+    ----
+    Scrapped Vertical Axis Input
+    ----
+    
+    float verticalMoveInput;
+
+    public void OnMoveVertical(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            chargedModeButton = true;
-        }
-        if (context.canceled)
-        {
-            chargedModeButton = false;
-        }
+        verticalMoveInput = context.ReadValue<float>();
     }
+
+*/
+
+
 }

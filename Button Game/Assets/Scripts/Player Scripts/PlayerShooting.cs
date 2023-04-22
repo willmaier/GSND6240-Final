@@ -102,7 +102,7 @@ public class PlayerShooting : MonoBehaviour
     {
         var bullet = Instantiate(shot, gunTip.transform.position, transform.rotation);
         //bullet.velocity (Vector2.right * shotSpeed * Time.deltaTime);
-        bool isFacingRight = GetComponent<PlayerController>().IsFacingRight;
+        bool isFacingRight = GetComponent<PlayerControlBlueMovement>().IsFacingRight;
         if (isFacingRight)
         {
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * shotSpeed;
@@ -119,7 +119,7 @@ public class PlayerShooting : MonoBehaviour
     {
         var chargedBullet = Instantiate(chargedShot, gunTip.transform.position, transform.rotation);
         //bullet.velocity (Vector2.right * shotSpeed * Time.deltaTime);
-        bool isFacingRight = GetComponent<PlayerController>().IsFacingRight;
+        bool isFacingRight = GetComponent<PlayerControlBlueMovement>().IsFacingRight;
         if (isFacingRight)
         {
             chargedBullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * chargedShotSpeed;

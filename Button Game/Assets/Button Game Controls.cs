@@ -24,68 +24,52 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
     ""name"": ""Button Game Controls"",
     ""maps"": [
         {
-            ""name"": ""Player"",
-            ""id"": ""fbdb9280-78dd-4cfc-9c21-fc465b76b570"",
+            ""name"": ""PlayerControllerBlue"",
+            ""id"": ""1cf0a5b9-fae3-4e60-b3d9-eea1a94b5e03"",
             ""actions"": [
+                {
+                    ""name"": ""Jetpack"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c7b2772-3976-416d-98e0-53b7c0afb0f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveUp"",
+                    ""type"": ""Value"",
+                    ""id"": ""79b61e46-6c4e-4062-8ba8-3acc5e1bb894"",
+                    ""expectedControlType"": ""Digital"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
                 {
                     ""name"": ""MoveHorizontal"",
                     ""type"": ""Value"",
-                    ""id"": ""0648b5d2-2b61-450f-9375-40e0f8d154bd"",
+                    ""id"": ""ba1ee8a4-8589-41f9-8413-abb3aef09224"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""MoveVertical"",
-                    ""type"": ""Value"",
-                    ""id"": ""6f5bffa8-f311-498e-a3fa-1ef4ece914c5"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""96740641-e3b0-4cb2-82a6-ca50bbd74f02"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""a1378df5-8946-4253-ba5f-ac106dd239fe"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SimpleFire"",
-                    ""type"": ""Button"",
-                    ""id"": ""244a0119-b8a3-46cf-a5d9-dd0e5345675a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChargedMode"",
-                    ""type"": ""Button"",
-                    ""id"": ""0189b7e2-b494-449c-b9c0-967310ad17d8"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""BM"",
-                    ""id"": ""00ca640b-d935-4593-8157-c05846ea39b3"",
+                    ""name"": """",
+                    ""id"": ""578b611a-16e5-4be2-baee-3c05b0c2f165"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Jetpack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""NM"",
+                    ""id"": ""3f464813-9230-40d7-82a1-4315407ba738"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -96,62 +80,90 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Negative"",
-                    ""id"": ""e2062cb9-1b15-46a2-838c-2f8d72a0bdd9"",
-                    ""path"": ""<Keyboard>/b"",
+                    ""id"": ""09a2e866-1a79-45bb-a9b7-b44d921a4aab"",
+                    ""path"": ""<Keyboard>/n"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""MoveHorizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""Positive"",
-                    ""id"": ""8180e8bd-4097-4f4e-ab88-4523101a6ce9"",
+                    ""id"": ""73a24076-5ddc-4266-ab47-1ec4fa512163"",
                     ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MoveHorizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""LR"",
+                    ""id"": ""8ee04bf6-0836-4ab9-bce6-b029a589f176"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveHorizontal"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""67f2c5b1-ef89-46a1-a088-65dc6f836169"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MoveHorizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""78999f6f-af51-4170-9310-c2eb5906762d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""MoveHorizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""41ea3635-907b-4ea5-a315-95857e7b7542"",
-                    ""path"": ""<Keyboard>/h"",
+                    ""id"": ""6c4a52c8-f754-4fd8-883d-2eaf8c30973f"",
+                    ""path"": ""<Keyboard>/b"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Jump"",
+                    ""action"": ""MoveUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerControllerRed"",
+            ""id"": ""40f68855-e97d-4d41-8916-ad40cc5bab7b"",
+            ""actions"": [
                 {
-                    ""name"": """",
-                    ""id"": ""7f5df2ac-1850-4889-ab1c-4b4ad7fdb020"",
-                    ""path"": ""<Keyboard>/n"",
-                    ""interactions"": """",
+                    ""name"": ""SimpleFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""2bdb6846-7c7f-4de1-b151-6b9311ce7f82"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""SimpleFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""9dcf8433-23cd-4fa5-a203-2c3b613b41af"",
+                    ""id"": ""f529f3a5-1439-4c75-9448-08d5cd55325a"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -159,61 +171,6 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""action"": ""SimpleFire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""89bbf1d8-34e9-46f9-8b79-8441ee56a026"",
-                    ""path"": ""<Keyboard>/v"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SimpleFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c7583dd2-006d-4f97-b4e6-78a1650802fb"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ChargedMode"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""HN"",
-                    ""id"": ""2ca1771e-841f-4a1c-a77d-4f686d324a06"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveVertical"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""089d501a-ffb1-4a9f-b964-8c47d6c8c8db"",
-                    ""path"": ""<Keyboard>/n"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveVertical"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""b467f06c-1968-4689-acff-8b5c06e49260"",
-                    ""path"": ""<Keyboard>/h"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveVertical"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -732,6 +689,34 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerCutContent"",
+            ""id"": ""fbdb9280-78dd-4cfc-9c21-fc465b76b570"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1378df5-8946-4253-ba5f-ac106dd239fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7f5df2ac-1850-4889-ab1c-4b4ad7fdb020"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -797,14 +782,14 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_MoveHorizontal = m_Player.FindAction("MoveHorizontal", throwIfNotFound: true);
-        m_Player_MoveVertical = m_Player.FindAction("MoveVertical", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_SimpleFire = m_Player.FindAction("SimpleFire", throwIfNotFound: true);
-        m_Player_ChargedMode = m_Player.FindAction("ChargedMode", throwIfNotFound: true);
+        // PlayerControllerBlue
+        m_PlayerControllerBlue = asset.FindActionMap("PlayerControllerBlue", throwIfNotFound: true);
+        m_PlayerControllerBlue_Jetpack = m_PlayerControllerBlue.FindAction("Jetpack", throwIfNotFound: true);
+        m_PlayerControllerBlue_MoveUp = m_PlayerControllerBlue.FindAction("MoveUp", throwIfNotFound: true);
+        m_PlayerControllerBlue_MoveHorizontal = m_PlayerControllerBlue.FindAction("MoveHorizontal", throwIfNotFound: true);
+        // PlayerControllerRed
+        m_PlayerControllerRed = asset.FindActionMap("PlayerControllerRed", throwIfNotFound: true);
+        m_PlayerControllerRed_SimpleFire = m_PlayerControllerRed.FindAction("SimpleFire", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -817,6 +802,9 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // PlayerCutContent
+        m_PlayerCutContent = asset.FindActionMap("PlayerCutContent", throwIfNotFound: true);
+        m_PlayerCutContent_Interact = m_PlayerCutContent.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -873,78 +861,87 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_MoveHorizontal;
-    private readonly InputAction m_Player_MoveVertical;
-    private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_SimpleFire;
-    private readonly InputAction m_Player_ChargedMode;
-    public struct PlayerActions
+    // PlayerControllerBlue
+    private readonly InputActionMap m_PlayerControllerBlue;
+    private IPlayerControllerBlueActions m_PlayerControllerBlueActionsCallbackInterface;
+    private readonly InputAction m_PlayerControllerBlue_Jetpack;
+    private readonly InputAction m_PlayerControllerBlue_MoveUp;
+    private readonly InputAction m_PlayerControllerBlue_MoveHorizontal;
+    public struct PlayerControllerBlueActions
     {
         private @ButtonGameControls m_Wrapper;
-        public PlayerActions(@ButtonGameControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MoveHorizontal => m_Wrapper.m_Player_MoveHorizontal;
-        public InputAction @MoveVertical => m_Wrapper.m_Player_MoveVertical;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @SimpleFire => m_Wrapper.m_Player_SimpleFire;
-        public InputAction @ChargedMode => m_Wrapper.m_Player_ChargedMode;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public PlayerControllerBlueActions(@ButtonGameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Jetpack => m_Wrapper.m_PlayerControllerBlue_Jetpack;
+        public InputAction @MoveUp => m_Wrapper.m_PlayerControllerBlue_MoveUp;
+        public InputAction @MoveHorizontal => m_Wrapper.m_PlayerControllerBlue_MoveHorizontal;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerControllerBlue; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(PlayerControllerBlueActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerControllerBlueActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface != null)
             {
-                @MoveHorizontal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
-                @MoveHorizontal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
-                @MoveHorizontal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveHorizontal;
-                @MoveVertical.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
-                @MoveVertical.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
-                @MoveVertical.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveVertical;
-                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @SimpleFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
-                @SimpleFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
-                @SimpleFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
-                @ChargedMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedMode;
-                @ChargedMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedMode;
-                @ChargedMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargedMode;
+                @Jetpack.started -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnJetpack;
+                @Jetpack.performed -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnJetpack;
+                @Jetpack.canceled -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnJetpack;
+                @MoveUp.started -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveUp;
+                @MoveUp.performed -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveUp;
+                @MoveUp.canceled -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveUp;
+                @MoveHorizontal.started -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveHorizontal;
+                @MoveHorizontal.performed -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveHorizontal;
+                @MoveHorizontal.canceled -= m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface.OnMoveHorizontal;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerControllerBlueActionsCallbackInterface = instance;
             if (instance != null)
             {
+                @Jetpack.started += instance.OnJetpack;
+                @Jetpack.performed += instance.OnJetpack;
+                @Jetpack.canceled += instance.OnJetpack;
+                @MoveUp.started += instance.OnMoveUp;
+                @MoveUp.performed += instance.OnMoveUp;
+                @MoveUp.canceled += instance.OnMoveUp;
                 @MoveHorizontal.started += instance.OnMoveHorizontal;
                 @MoveHorizontal.performed += instance.OnMoveHorizontal;
                 @MoveHorizontal.canceled += instance.OnMoveHorizontal;
-                @MoveVertical.started += instance.OnMoveVertical;
-                @MoveVertical.performed += instance.OnMoveVertical;
-                @MoveVertical.canceled += instance.OnMoveVertical;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
-                @SimpleFire.started += instance.OnSimpleFire;
-                @SimpleFire.performed += instance.OnSimpleFire;
-                @SimpleFire.canceled += instance.OnSimpleFire;
-                @ChargedMode.started += instance.OnChargedMode;
-                @ChargedMode.performed += instance.OnChargedMode;
-                @ChargedMode.canceled += instance.OnChargedMode;
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public PlayerControllerBlueActions @PlayerControllerBlue => new PlayerControllerBlueActions(this);
+
+    // PlayerControllerRed
+    private readonly InputActionMap m_PlayerControllerRed;
+    private IPlayerControllerRedActions m_PlayerControllerRedActionsCallbackInterface;
+    private readonly InputAction m_PlayerControllerRed_SimpleFire;
+    public struct PlayerControllerRedActions
+    {
+        private @ButtonGameControls m_Wrapper;
+        public PlayerControllerRedActions(@ButtonGameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SimpleFire => m_Wrapper.m_PlayerControllerRed_SimpleFire;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerControllerRed; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerControllerRedActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerControllerRedActions instance)
+        {
+            if (m_Wrapper.m_PlayerControllerRedActionsCallbackInterface != null)
+            {
+                @SimpleFire.started -= m_Wrapper.m_PlayerControllerRedActionsCallbackInterface.OnSimpleFire;
+                @SimpleFire.performed -= m_Wrapper.m_PlayerControllerRedActionsCallbackInterface.OnSimpleFire;
+                @SimpleFire.canceled -= m_Wrapper.m_PlayerControllerRedActionsCallbackInterface.OnSimpleFire;
+            }
+            m_Wrapper.m_PlayerControllerRedActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @SimpleFire.started += instance.OnSimpleFire;
+                @SimpleFire.performed += instance.OnSimpleFire;
+                @SimpleFire.canceled += instance.OnSimpleFire;
+            }
+        }
+    }
+    public PlayerControllerRedActions @PlayerControllerRed => new PlayerControllerRedActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1050,6 +1047,39 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // PlayerCutContent
+    private readonly InputActionMap m_PlayerCutContent;
+    private IPlayerCutContentActions m_PlayerCutContentActionsCallbackInterface;
+    private readonly InputAction m_PlayerCutContent_Interact;
+    public struct PlayerCutContentActions
+    {
+        private @ButtonGameControls m_Wrapper;
+        public PlayerCutContentActions(@ButtonGameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_PlayerCutContent_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerCutContent; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerCutContentActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerCutContentActions instance)
+        {
+            if (m_Wrapper.m_PlayerCutContentActionsCallbackInterface != null)
+            {
+                @Interact.started -= m_Wrapper.m_PlayerCutContentActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerCutContentActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerCutContentActionsCallbackInterface.OnInteract;
+            }
+            m_Wrapper.m_PlayerCutContentActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+            }
+        }
+    }
+    public PlayerCutContentActions @PlayerCutContent => new PlayerCutContentActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1095,14 +1125,15 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_XRSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface IPlayerControllerBlueActions
     {
+        void OnJetpack(InputAction.CallbackContext context);
+        void OnMoveUp(InputAction.CallbackContext context);
         void OnMoveHorizontal(InputAction.CallbackContext context);
-        void OnMoveVertical(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IPlayerControllerRedActions
+    {
         void OnSimpleFire(InputAction.CallbackContext context);
-        void OnChargedMode(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1116,5 +1147,9 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IPlayerCutContentActions
+    {
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
