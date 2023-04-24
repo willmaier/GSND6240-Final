@@ -267,6 +267,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1427540412540866027, guid: 84c3a10d95c9aad4e9904f13a15cee3a, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427540412540866027, guid: 84c3a10d95c9aad4e9904f13a15cee3a, type: 3}
       propertyPath: myFuelBar
       value: 
       objectReference: {fileID: 1741789912}
@@ -56149,11 +56153,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4248946301060833145, guid: 393f162ca7be8674bad14a5b846d0080, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -280
+      value: 77
       objectReference: {fileID: 0}
     - target: {fileID: 4248946301060833145, guid: 393f162ca7be8674bad14a5b846d0080, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -148
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4248946301213440017, guid: 393f162ca7be8674bad14a5b846d0080, type: 3}
       propertyPath: m_UiScaleMode
@@ -56372,6 +56376,10 @@ PrefabInstance:
     - target: {fileID: 7633810251353968020, guid: 31a62e6519c18cb4990dc2a7ec1d144f, type: 3}
       propertyPath: m_Name
       value: IntroChatbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633810251353968020, guid: 31a62e6519c18cb4990dc2a7ec1d144f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31a62e6519c18cb4990dc2a7ec1d144f, type: 3}
