@@ -11,7 +11,16 @@ public class TeleporterController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Invoke("Teleport", 3);
+            Invoke("Teleport", 4);
+            AudioManager.instance.Play("TPSound");
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            CancelInvoke("Teleport");
+            AudioManager.instance.Stop("TPSound");
         }
     }
 
