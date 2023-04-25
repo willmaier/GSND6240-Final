@@ -517,7 +517,7 @@ Transform:
   m_GameObject: {fileID: 663261251}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.15, y: 2.82, z: 0}
-  m_LocalScale: {x: 2.49, y: 2.645625, z: 2.645625}
+  m_LocalScale: {x: 2.8499997, y: 3.0281248, z: 3.0281248}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1263710931}
@@ -1094,6 +1094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HintComputerFinal
       objectReference: {fileID: 0}
+    - target: {fileID: 7096752866479036371, guid: 9eedf2875598ccf428ddac9575066fcf, type: 3}
+      propertyPath: messagePrefab
+      value: 
+      objectReference: {fileID: 663261251}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eedf2875598ccf428ddac9575066fcf, type: 3}
 --- !u!4 &1263710931 stripped
