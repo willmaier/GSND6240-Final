@@ -31,6 +31,10 @@ public class EnemyBullet : MonoBehaviour
             //Invoke("RestartLevel", 2);
             RestartLevel();
         }
+        else if (collision.gameObject.tag != "Shield")
+        {
+            //Destroy(gameObject);
+        }
         else if (collision.gameObject.tag != "Enemy")
         {
             Destroy(gameObject);
