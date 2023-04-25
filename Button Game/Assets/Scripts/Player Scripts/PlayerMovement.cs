@@ -187,6 +187,19 @@ public class PlayerMovement : MonoBehaviour
         if (!jetpackButton)
         {
             IsGroundMoving = horizontalMoveInput != 0; // Set is ground moving for animator
+            // footstep sfx
+            if (IsGroundMoving && IsGrounded)
+            {
+                if (!AudioManager.instance.isPlaying("Walking"))
+                {
+                    AudioManager.instance.Play("Walking");
+                }
+            }
+            else
+            {
+                AudioManager.instance.Stop("Walking");
+            }
+
         }
         else
         {
@@ -205,6 +218,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.started && IsGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); //Jump
+            AudioManager.instance.Stop("Walking");//Stop Walking Audio
         }
     }
 
