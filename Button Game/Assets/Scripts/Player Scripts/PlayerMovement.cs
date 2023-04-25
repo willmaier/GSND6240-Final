@@ -128,7 +128,13 @@ public class PlayerMovement : MonoBehaviour
 
         // Check if jetpack on
         if (jetpackButton && JetpackFuel > 0)
-        { JetpackOn = true; } else { JetpackOn = false; }
+        { JetpackOn = true; } 
+        else 
+        { 
+            JetpackOn = false;
+            AudioManager.instance.Stop("BoosterHolding");
+            AudioManager.instance.Stop("BoosterStart");
+        }
 
         //Horizontal move
         rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
@@ -247,10 +253,19 @@ public class PlayerMovement : MonoBehaviour
         if (context.started)
         {
             jetpackButton = true;
+            AudioManager.instance.Play("Ignition");
+            //Play Booster Audio if in Air
+            if (!IsGrounded&& jetpackButton)
+            {
+                AudioManager.instance.Play("BoosterStart");
+                AudioManager.instance.Play("BoosterHolding");
+            }
         }
         if (context.canceled)
         {
             jetpackButton = false;
+            AudioManager.instance.Stop("BoosterStart");
+            AudioManager.instance.Stop("BoosterHolding");
         }
     }
 }

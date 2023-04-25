@@ -177,6 +177,30 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     isPlaying: 0
+  - name: Ignition
+    clip: {fileID: 8300000, guid: 992d2976004e1364bb3953d1890601af, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.2
+    pitch: 2.5
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
+  - name: BoosterStart
+    clip: {fileID: 8300000, guid: 817ccb00148985747a952d9f6bd003d2, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
+  - name: BoosterHolding
+    clip: {fileID: 8300000, guid: 84c2ec999bdb7f845a373e3e18de6a33, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
 --- !u!4 &68769111
 Transform:
   m_ObjectHideFlags: 0
