@@ -49,8 +49,22 @@ public class PlayerMovement : MonoBehaviour
         }
         private set
         {
+            if (_isGroundMoving != value) //If a new value is being set (i.e. if IsGroundMoving's status changes)
+            {
+                // Set walking audio
+                if (value)
+                {
+                    AudioManager.instance.Play("Walking");
+                }
+                else
+                {
+                    AudioManager.instance.Stop("Walking");
+                }
+            }
+
+
             _isGroundMoving = value;
-            anim.SetBool("isMoving", value);
+            anim.SetBool("isMoving", value); //Set walking animation
         }
     }
 
@@ -127,8 +141,8 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else //If the new status is that the jetpack is off...
                 {
-                    AudioManager.instance.Stop("BoosterHolding");
                     AudioManager.instance.Stop("BoosterStart");
+                    AudioManager.instance.Stop("BoosterHolding");
                 }
             }
 
@@ -147,11 +161,7 @@ public class PlayerMovement : MonoBehaviour
         if (jetpackButton && JetpackFuel > 0 && !IsGrounded)
         { JetpackOn = true; } 
         else 
-        { JetpackOn = false;
-        //stop audio when fuel is 0
-        AudioManager.instance.Stop("BoosterHolding");
-        AudioManager.instance.Stop("BoosterStart");
-        }
+        { JetpackOn = false; }
 
         //Horizontal move
         rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
@@ -211,20 +221,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMoveInput = context.ReadValue<float>();
         if (!jetpackButton)
         {
-            IsGroundMoving = horizontalMoveInput != 0; // Set is ground moving for animator
-            //footstep sfx
-            if (IsGroundMoving && IsGrounded)
-            {
-                if (!AudioManager.instance.isPlaying("Walking"))
-                {
-                    AudioManager.instance.Play("Walking");
-                }
-            }
-            else
-            {
-                AudioManager.instance.Stop("Walking");
-            }
-
+            IsGroundMoving = horizontalMoveInput != 0; // Set is ground moving for animator and audio
         }
         else
         {
@@ -251,14 +248,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.started && IsGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); //Jump
-            AudioManager.instance.Stop("Walking");
             AudioManager.instance.Play("Jumping");
-            //plat jetpack audio when use jetpack without jump first
-            if (jetpackButton == true && !AudioManager.instance.isPlaying("BoosterStart") && !AudioManager.instance.isPlaying("BoosterHolding")) 
-            {
-                AudioManager.instance.Play("BoosterStart");
-                AudioManager.instance.Play("BoosterHolding");
-            }
         }
     }
 
@@ -279,21 +269,10 @@ public class PlayerMovement : MonoBehaviour
         {
             jetpackButton = true;
             AudioManager.instance.Play("Ignition"); //Play an ignition sound regardless of actual jetpack status
-            //Play Booster Audio if in Air
-            if (!IsGrounded && jetpackButton)
-            {
-                if (!AudioManager.instance.isPlaying("BoosterStart") && !AudioManager.instance.isPlaying("BoosterHolding"))
-                {
-                    AudioManager.instance.Play("BoosterStart");
-                    AudioManager.instance.Play("BoosterHolding");
-                }
-
-            }
         }
         if (context.canceled)
         {
             jetpackButton = false;
-            AudioManager.instance.Stop("BoosterHolding");//stop audio
         }
     }
 }
