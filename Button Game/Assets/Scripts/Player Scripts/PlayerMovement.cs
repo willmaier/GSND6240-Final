@@ -208,6 +208,14 @@ public class PlayerMovement : MonoBehaviour
         SetFacingDirection(horizontalMoveInput); // Set facing direction only when movement is inputted
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (IsGrounded && collision.gameObject.CompareTag("Ground"))
+        {
+            AudioManager.instance.Play("Landing");
+        }
+    }
+
     //    [SerializeField] private bool canDoubleJump = true;
     private float verticalMoveInput;
 
@@ -219,6 +227,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); //Jump
             AudioManager.instance.Stop("Walking");
+            AudioManager.instance.Play("Jumping");
         }
     }
 
