@@ -29,4 +29,12 @@ public class EnemyShooting : MonoBehaviour
             nextShot = Time.time + fireRate;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerBullet" || collision.gameObject.tag == "ChargedBullet")
+        {
+            AudioManager.instance.Play("Explosion1");
+        }
+    }
+
 }

@@ -125,3 +125,11 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     isPlaying: 0
+  - name: Explosion1
+    clip: {fileID: 8300000, guid: 9552457f00583ad4fae52b47c1335a77, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
