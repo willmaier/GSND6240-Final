@@ -82,12 +82,14 @@ public class PlayerShooting : MonoBehaviour
         {
             //Debug.Log("Charge started.");
             cShotCharging = true; // Turn on charge tracker
+            AudioManager.instance.Play("Charge");
         }
     }
 
     void CShotChargingEndCheck()
     {
         cShotCharging = false; // Turn off charge time tracker
+        AudioManager.instance.Stop("Charge");
         if (chargeTime >= chargeTimeLimit) //check if successful charged shot
         {
             //Debug.Log("Successful charged shot.");
@@ -106,10 +108,12 @@ public class PlayerShooting : MonoBehaviour
         if (isFacingRight)
         {
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * shotSpeed;
+            AudioManager.instance.Play("Shot");
         }
         else
         {
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.left * shotSpeed;
+            AudioManager.instance.Play("Shot");
         }
         
         Destroy(bullet, 5);
@@ -123,10 +127,12 @@ public class PlayerShooting : MonoBehaviour
         if (isFacingRight)
         {
             chargedBullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * chargedShotSpeed;
+            AudioManager.instance.Play("ChargeShot");
         }
         else
         {
             chargedBullet.GetComponent<Rigidbody2D>().velocity = Vector2.left * chargedShotSpeed;
+            AudioManager.instance.Play("ChargeShot");
         }
 
         Destroy(chargedBullet, 5);

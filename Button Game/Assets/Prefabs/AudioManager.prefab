@@ -93,3 +93,27 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     isPlaying: 0
+  - name: Shot
+    clip: {fileID: 8300000, guid: aeb74aaadc31f1546802c50b986ea32c, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
+  - name: ChargeShot
+    clip: {fileID: 8300000, guid: db32daed5aac5cb4696e59bdafa24f2d, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
+  - name: Charge
+    clip: {fileID: 8300000, guid: 2078d08d12aadce408d54200df696014, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    isPlaying: 0
