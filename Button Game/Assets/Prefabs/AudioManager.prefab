@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5379155077998310787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5379155077998310785}
+  - component: {fileID: 5379155077998310784}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5379155077998310785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379155077998310787}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5077631, y: 0.18295078, z: 3.653851}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5379155077998310784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379155077998310787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daaaa92b1e18c104e9ae6c8c52415fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Walking
+    clip: {fileID: 8300000, guid: 452e2d63cd637b44c8b24bcd793d1ca9, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.005
+    pitch: 2.5
+    loop: 1
+    source: {fileID: 0}
+    isPlaying: 0
+  - name: Jumping
+    clip: {fileID: 8300000, guid: 309b8cf33a92fb449ae8a60014e598fe, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.02
+    pitch: 2.5
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
+  - name: Landing
+    clip: {fileID: 8300000, guid: 07393f2c1b4996b44ba53f4bf22a2e6c, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.02
+    pitch: 2.5
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
+  - name: Ignition
+    clip: {fileID: 8300000, guid: 992d2976004e1364bb3953d1890601af, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.2
+    pitch: 2.5
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
+  - name: BoosterStart
+    clip: {fileID: 8300000, guid: 817ccb00148985747a952d9f6bd003d2, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
+  - name: BoosterHolding
+    clip: {fileID: 8300000, guid: 84c2ec999bdb7f845a373e3e18de6a33, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    isPlaying: 0
