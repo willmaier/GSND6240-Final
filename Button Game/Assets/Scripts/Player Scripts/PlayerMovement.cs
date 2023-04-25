@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool _jetpackOn;
+    private bool _jetpackOn = false;
 
     public bool JetpackOn 
     {
@@ -117,6 +117,21 @@ public class PlayerMovement : MonoBehaviour
         }
         private set
         {
+            if (_jetpackOn != value) //If a new value is being set (i.e. if JetpackOn's status changes)
+            {
+                // Set jetpack audio
+                if (value) //If the new status is that the jetpack is on...
+                {
+                    AudioManager.instance.Play("BoosterStart");
+                    AudioManager.instance.Play("BoosterHolding");
+                }
+                else //If the new status is that the jetpack is off...
+                {
+                    AudioManager.instance.Stop("BoosterHolding");
+                    AudioManager.instance.Stop("BoosterStart");
+                }
+            }
+
             _jetpackOn = value;
             anim.SetBool("jetpackOn", value);
         }
@@ -127,14 +142,12 @@ public class PlayerMovement : MonoBehaviour
         IsGrounded = Physics2D.CapsuleCast(coll.bounds.center, coll.bounds.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.05f, jumpableGround);
 
         // Check if jetpack on
-        if (jetpackButton && JetpackFuel > 0)
+        // Jetpack is on if jetpack button is held & jetpack has fuel & player is not grounded
+
+        if (jetpackButton && JetpackFuel > 0 && !IsGrounded)
         { JetpackOn = true; } 
         else 
-        { 
-            JetpackOn = false;
-            AudioManager.instance.Stop("BoosterHolding");
-            AudioManager.instance.Stop("BoosterStart");
-        }
+        { JetpackOn = false;}
 
         //Horizontal move
         rb.velocity = new Vector2(horizontalMoveInput * moveSpeed, rb.velocity.y);
@@ -155,22 +168,24 @@ public class PlayerMovement : MonoBehaviour
     private void SetJetpackCharging()
     {
         // Check if can recharge jetpack
-        if (JetpackOn) 
+        if (JetpackOn) // If player is using jetpack movement midair
         {
             chargingStatus = -1; // Draining
             return;
         } 
 
-        if (IsGrounded) 
+        if (IsGrounded) // If grounded
         { 
             chargingStatus = 1; // Charging
             return;
         }  // also scrapped double jump var: canDoubleJump = true;
 
-        if (!IsGrounded && chargingStatus != 1)
+        if (!JetpackOn && !IsGrounded && chargingStatus != 1) // If the player turns off jetpack midair
         {
             chargingStatus = 0; // Maintaining
         } 
+
+        // Otherwise maintain previous charging status
     }
 
     private void SetFacingDirection(float horizontalMoveInput)
@@ -253,19 +268,11 @@ public class PlayerMovement : MonoBehaviour
         if (context.started)
         {
             jetpackButton = true;
-            AudioManager.instance.Play("Ignition");
-            //Play Booster Audio if in Air
-            if (!IsGrounded&& jetpackButton)
-            {
-                AudioManager.instance.Play("BoosterStart");
-                AudioManager.instance.Play("BoosterHolding");
-            }
+            AudioManager.instance.Play("Ignition"); //Play an ignition sound regardless of actual jetpack status
         }
         if (context.canceled)
         {
             jetpackButton = false;
-            AudioManager.instance.Stop("BoosterStart");
-            AudioManager.instance.Stop("BoosterHolding");
         }
     }
 }
