@@ -388,6 +388,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4016293923507052443, guid: 225896d33a4d31a4e867c4776006060e, type: 3}
   m_PrefabInstance: {fileID: 2130699489}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &323518162 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 526021537920919505, guid: 62f3536cece2f384583b10d6ab651076, type: 3}
+  m_PrefabInstance: {fileID: 192760559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &335283545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31870,6 +31875,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7633810250464194900, guid: 31a62e6519c18cb4990dc2a7ec1d144f, type: 3}
+      propertyPath: messagePrefab
+      value: 
+      objectReference: {fileID: 846795339}
     - target: {fileID: 7633810251353968020, guid: 31a62e6519c18cb4990dc2a7ec1d144f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -59207,7 +59216,7 @@ PrefabInstance:
     - target: {fileID: 1161395460122343806, guid: 96c69f007ef160e4da948bfdb15a8dcf, type: 3}
       propertyPath: teleportTarget
       value: 
-      objectReference: {fileID: 515073589}
+      objectReference: {fileID: 323518162}
     - target: {fileID: 1161395460122343807, guid: 96c69f007ef160e4da948bfdb15a8dcf, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.6
