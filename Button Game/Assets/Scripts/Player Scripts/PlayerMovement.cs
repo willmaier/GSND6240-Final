@@ -154,10 +154,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // Check if grounded
         IsGrounded = Physics2D.CapsuleCast(coll.bounds.center, coll.bounds.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.05f, jumpableGround);
+        SetGroundMoving(); //Set IsGroundMoving for animator and audio
 
         // Check if jetpack on
         // Jetpack is on if jetpack button is held & jetpack has fuel & player is not grounded
-
         if (jetpackButton && JetpackFuel > 0 && !IsGrounded)
         { JetpackOn = true; } 
         else 
@@ -214,19 +214,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void SetGroundMoving()
+    {
+        if (!IsGrounded)
+        {
+            IsGroundMoving = false;
+            return;
+        }
+        
+        IsGroundMoving = horizontalMoveInput != 0; // Set is ground moving for animator and audio
+    }
+
     private float horizontalMoveInput;
 
     public void OnMoveHorizontal(InputAction.CallbackContext context)
     {
         horizontalMoveInput = context.ReadValue<float>();
-        if (!jetpackButton)
-        {
-            IsGroundMoving = horizontalMoveInput != 0; // Set is ground moving for animator and audio
-        }
-        else
-        {
-            IsGroundMoving = false;
-        }
         SetFacingDirection(horizontalMoveInput); // Set facing direction only when movement is inputted
     }
 
