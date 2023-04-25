@@ -33,7 +33,11 @@ public class EnemyBullet : MonoBehaviour
         }
         else if (collision.gameObject.tag != "Shield")
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.tag == "Shield")
+        {
+
         }
         else if (collision.gameObject.tag != "Enemy")
         {
