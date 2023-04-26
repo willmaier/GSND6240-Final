@@ -71,6 +71,42 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlatformControl2DMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""a3646c84-3349-44db-9d08-857f6915967b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PlatformControlRotation"",
+                    ""type"": ""Value"",
+                    ""id"": ""57a022ac-a5f6-48e9-a168-7a612af54b39"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PlatformConrolButton4"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5bc6c04-9244-407c-a582-0a5281089484"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlatformConrolButtonR"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba7491ce-ed5e-4bb8-b164-a7b449e99211"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -181,6 +217,116 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChargeShot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""6Y7U"",
+                    ""id"": ""dcf9b3ac-f8f8-4231-9573-59288214a60c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlatformControl2DMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""b11ba80c-eb2b-4aec-807a-9c85fe67dabf"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PlatformControl2DMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""4db1a4ce-4c57-47d8-acca-0b5203a92ef0"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PlatformControl2DMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""9b97a07d-8ae5-458f-8285-2c8a7fcb1582"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlatformControl2DMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""bd5dd766-543f-4d49-9ba0-b19fa066d8e0"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlatformControl2DMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""5T"",
+                    ""id"": ""9cb042ac-5946-4eb3-9c94-b96d372211ac"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlatformControlRotation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""9322bacf-9547-4599-b24c-a0fd085e3156"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PlatformControlRotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""93ec0601-33bf-4d34-b655-b51a1c8d749a"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PlatformControlRotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fba40a7a-2af1-49ea-a9b2-e014dac8d729"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PlatformConrolButton4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""383c5bb1-f836-4e5e-8e50-5bd8d6a3e646"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PlatformConrolButtonR"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -801,6 +947,10 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         m_Player_MoveHorizontal = m_Player.FindAction("MoveHorizontal", throwIfNotFound: true);
         m_Player_ChargeShot = m_Player.FindAction("ChargeShot", throwIfNotFound: true);
         m_Player_SimpleFire = m_Player.FindAction("SimpleFire", throwIfNotFound: true);
+        m_Player_PlatformControl2DMove = m_Player.FindAction("PlatformControl2DMove", throwIfNotFound: true);
+        m_Player_PlatformControlRotation = m_Player.FindAction("PlatformControlRotation", throwIfNotFound: true);
+        m_Player_PlatformConrolButton4 = m_Player.FindAction("PlatformConrolButton4", throwIfNotFound: true);
+        m_Player_PlatformConrolButtonR = m_Player.FindAction("PlatformConrolButtonR", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -880,6 +1030,10 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MoveHorizontal;
     private readonly InputAction m_Player_ChargeShot;
     private readonly InputAction m_Player_SimpleFire;
+    private readonly InputAction m_Player_PlatformControl2DMove;
+    private readonly InputAction m_Player_PlatformControlRotation;
+    private readonly InputAction m_Player_PlatformConrolButton4;
+    private readonly InputAction m_Player_PlatformConrolButtonR;
     public struct PlayerActions
     {
         private @ButtonGameControls m_Wrapper;
@@ -889,6 +1043,10 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         public InputAction @MoveHorizontal => m_Wrapper.m_Player_MoveHorizontal;
         public InputAction @ChargeShot => m_Wrapper.m_Player_ChargeShot;
         public InputAction @SimpleFire => m_Wrapper.m_Player_SimpleFire;
+        public InputAction @PlatformControl2DMove => m_Wrapper.m_Player_PlatformControl2DMove;
+        public InputAction @PlatformControlRotation => m_Wrapper.m_Player_PlatformControlRotation;
+        public InputAction @PlatformConrolButton4 => m_Wrapper.m_Player_PlatformConrolButton4;
+        public InputAction @PlatformConrolButtonR => m_Wrapper.m_Player_PlatformConrolButtonR;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -913,6 +1071,18 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 @SimpleFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
                 @SimpleFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
                 @SimpleFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSimpleFire;
+                @PlatformControl2DMove.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformControl2DMove;
+                @PlatformControl2DMove.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformControl2DMove;
+                @PlatformControl2DMove.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformControl2DMove;
+                @PlatformControlRotation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformControlRotation;
+                @PlatformControlRotation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformControlRotation;
+                @PlatformControlRotation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformControlRotation;
+                @PlatformConrolButton4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformConrolButton4;
+                @PlatformConrolButton4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformConrolButton4;
+                @PlatformConrolButton4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformConrolButton4;
+                @PlatformConrolButtonR.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformConrolButtonR;
+                @PlatformConrolButtonR.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformConrolButtonR;
+                @PlatformConrolButtonR.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlatformConrolButtonR;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -932,6 +1102,18 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
                 @SimpleFire.started += instance.OnSimpleFire;
                 @SimpleFire.performed += instance.OnSimpleFire;
                 @SimpleFire.canceled += instance.OnSimpleFire;
+                @PlatformControl2DMove.started += instance.OnPlatformControl2DMove;
+                @PlatformControl2DMove.performed += instance.OnPlatformControl2DMove;
+                @PlatformControl2DMove.canceled += instance.OnPlatformControl2DMove;
+                @PlatformControlRotation.started += instance.OnPlatformControlRotation;
+                @PlatformControlRotation.performed += instance.OnPlatformControlRotation;
+                @PlatformControlRotation.canceled += instance.OnPlatformControlRotation;
+                @PlatformConrolButton4.started += instance.OnPlatformConrolButton4;
+                @PlatformConrolButton4.performed += instance.OnPlatformConrolButton4;
+                @PlatformConrolButton4.canceled += instance.OnPlatformConrolButton4;
+                @PlatformConrolButtonR.started += instance.OnPlatformConrolButtonR;
+                @PlatformConrolButtonR.performed += instance.OnPlatformConrolButtonR;
+                @PlatformConrolButtonR.canceled += instance.OnPlatformConrolButtonR;
             }
         }
     }
@@ -1126,6 +1308,10 @@ public partial class @ButtonGameControls : IInputActionCollection2, IDisposable
         void OnMoveHorizontal(InputAction.CallbackContext context);
         void OnChargeShot(InputAction.CallbackContext context);
         void OnSimpleFire(InputAction.CallbackContext context);
+        void OnPlatformControl2DMove(InputAction.CallbackContext context);
+        void OnPlatformControlRotation(InputAction.CallbackContext context);
+        void OnPlatformConrolButton4(InputAction.CallbackContext context);
+        void OnPlatformConrolButtonR(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

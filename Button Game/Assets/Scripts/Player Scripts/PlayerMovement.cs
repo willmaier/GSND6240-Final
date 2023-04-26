@@ -172,6 +172,12 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, verticalMoveInput * jetpackMoveSpeed);
         }
 
+        //Move with moving platforms
+        if (isOnMovingPlatform)
+        {
+            rb.velocity += platformRBody.velocity;
+        }
+
         // Recharge or consume jetpack
         SetJetpackCharging();
         JetpackFuel += jetpackConsumptionRechargeSpeed * Time.deltaTime * chargingStatus;
@@ -233,11 +239,30 @@ public class PlayerMovement : MonoBehaviour
         SetFacingDirection(horizontalMoveInput); // Set facing direction only when movement is inputted
     }
 
+    private bool isOnMovingPlatform = false;
+
+    private Rigidbody2D platformRBody;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (IsGrounded && collision.gameObject.CompareTag("Ground"))
+        if (IsGrounded)
         {
             AudioManager.instance.Play("Landing");
+        }
+
+        if (IsGrounded && collision.gameObject.CompareTag("MovablePlatform"))
+        {
+            isOnMovingPlatform = true;
+            platformRBody = collision.gameObject.GetComponent<Rigidbody2D>();
+        }
+
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovablePlatform"))
+        {
+            isOnMovingPlatform = false;
+            platformRBody = null;
         }
     }
 
