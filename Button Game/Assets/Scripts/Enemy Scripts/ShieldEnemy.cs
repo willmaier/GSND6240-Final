@@ -28,20 +28,20 @@ public class ShieldEnemy : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "ChargedBullet" && isShielded)
+        else if (collision.gameObject.tag == "ChargedBullet" && isShielded)
         {
             Destroy(shield);
             Destroy(collision.gameObject);
             isShielded = false;
         }
 
-        if (collision.gameObject.tag == "PlayerBullet" && !isShielded)
+        else if (collision.gameObject.tag == "PlayerBullet" && !isShielded)
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "PlayerBullet" && isShielded)
+        else if (collision.gameObject.tag == "PlayerBullet" && isShielded)
         {
             Destroy(collision.gameObject);
         }
