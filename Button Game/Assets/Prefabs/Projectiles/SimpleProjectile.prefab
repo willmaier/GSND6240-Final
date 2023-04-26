@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4116074126797886051}
   - component: {fileID: 4809762967793401464}
   - component: {fileID: 1820921585181623764}
-  - component: {fileID: 5324423882135905931}
+  - component: {fileID: 6371295919807530347}
   m_Layer: 0
   m_Name: SimpleProjectile
   m_TagString: PlayerBullet
@@ -134,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5324423882135905931
+--- !u!114 &6371295919807530347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +143,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 172052424948013622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f160d031c902f3c4b8252606aab47e9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 572c35b28ac650041b52a50e21fe33c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

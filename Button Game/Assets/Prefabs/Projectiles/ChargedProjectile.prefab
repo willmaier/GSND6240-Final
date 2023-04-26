@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4063634319442106626}
   - component: {fileID: 5528836192860101750}
   - component: {fileID: -1482961322519167715}
-  - component: {fileID: -902773807132312055}
+  - component: {fileID: -6533409757168499303}
   m_Layer: 0
   m_Name: ChargedProjectile
   m_TagString: ChargedBullet
@@ -134,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-902773807132312055
+--- !u!114 &-6533409757168499303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +143,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 532144882120071878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f160d031c902f3c4b8252606aab47e9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1791b7ab5a470814ea570548053ccf08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
