@@ -9,6 +9,7 @@ TagManager:
   - ChargedBullet
   - Ground
   - Shield
+  - MovablePlatform
   layers:
   - Default
   - TransparentFX
