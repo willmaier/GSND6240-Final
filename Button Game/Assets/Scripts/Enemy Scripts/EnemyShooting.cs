@@ -25,6 +25,7 @@ public class EnemyShooting : MonoBehaviour
     {
         if (Time.time > nextShot)
         {
+            Debug.Log("Shooting");
             Instantiate(bullet, transform.position, Quaternion.identity);
             nextShot = Time.time + fireRate;
         }
@@ -35,6 +36,6 @@ public class EnemyShooting : MonoBehaviour
         {
             AudioManager.instance.Play("Explosion1");
         }
-    }
+    } 
 
 }
