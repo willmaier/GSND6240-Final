@@ -9,28 +9,51 @@ public class ControllablePlatformController : MonoBehaviour
     private Rigidbody2D rb;
     
     [SerializeField] private Transform boundingBoxTransform;
-    private float boundaryX;
-    private float boundaryY;
+    private float boundaryXMax;
+    private float boundaryXMin;
+    private float boundaryYMax;
+    private float boundaryYMin;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        boundaryX = (boundingBoxTransform.lossyScale.x - this.transform.lossyScale.x) / 2;
-        boundaryY = (boundingBoxTransform.lossyScale.y - this.transform.lossyScale.y) / 2;
+        float xDiff = (boundingBoxTransform.localScale.x - gameObject.transform.localScale.x) / 2;
+        float yDiff = (boundingBoxTransform.localScale.y - gameObject.transform.localScale.y) / 2;
+
+        float boundingBoxPosX = boundingBoxTransform.position.x;
+        float boundingBoxPosY = boundingBoxTransform.position.y;
+
+        // Boundary X and Y in world positions
+        boundaryXMax = boundingBoxPosX + xDiff;
+        boundaryXMin = boundingBoxPosX - xDiff;
+        boundaryYMax = boundingBoxPosY + yDiff;
+        boundaryYMin = boundingBoxPosY - yDiff;
+
+        jumpableGround = LayerMask.GetMask("SolidEnvironment");
     }
 
     // FIXEDUPDATE
     [SerializeField] private float moveSpeed = 3f;
+    private float x;
+    private float y;
+
     private void FixedUpdate()
     {
-        //Move
-        rb.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+        //Get current x and y in world position
+         x = gameObject.transform.position.x;
+         y = gameObject.transform.position.y;
 
-        //Clamp position inside bounding box
-        float x = Mathf.Clamp(this.transform.localPosition.x, -boundaryX, boundaryX);
-        float y = Mathf.Clamp(this.transform.localPosition.y, -boundaryY, boundaryY);
-        this.transform.localPosition = new Vector2(x, y);
+        //Move x and y according to input
+        x += moveInput.x * moveSpeed * Time.deltaTime;
+        y += moveInput.y * moveSpeed * Time.deltaTime;
+
+        //Clamp according to world position boundary
+        x = Mathf.Clamp(x, boundaryXMin, boundaryXMax);
+        y = Mathf.Clamp(y, boundaryYMin, boundaryYMax);
+
+        //Finalize move
+        gameObject.transform.position = new Vector2(x, y);
     }
 
     private Vector2 moveInput;
@@ -39,4 +62,38 @@ public class ControllablePlatformController : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
     }
+
+    private Transform pTransform; //player collider for cast
+    private RaycastHit2D castHit;
+    private bool isPlayerGroundedOnMe = false;
+    private LayerMask jumpableGround;
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            pTransform = col.gameObject.GetComponent<Transform>();
+            castHit = Physics2D.Raycast(new Vector2(pTransform.position.x, pTransform.position.y - 0.56f), Vector2.down, 0.05f, jumpableGround); //Shoot ray from near bottom of player
+            isPlayerGroundedOnMe = castHit.collider.gameObject == gameObject;
+        }
+        else
+        {
+            return;
+        }
+
+        if (isPlayerGroundedOnMe)
+        {
+            col.gameObject.transform.SetParent(gameObject.transform, true);
+        }
+    }
+    
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            isPlayerGroundedOnMe = false;
+            col.gameObject.transform.parent = null;
+        }
+    }
+
 }
