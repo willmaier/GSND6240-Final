@@ -5,7 +5,7 @@ using UnityEngine;
 public class RespawnPointManager : MonoBehaviour
 {
     public static RespawnPointManager instance;
-    public Vector3 respawnPosition; // new variable to store respawn point
+    [SerializeField] public Vector3 respawnPosition; // Variable to store respawn position
 
     void Awake()
     {
@@ -13,11 +13,20 @@ public class RespawnPointManager : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);// game object will not be destroyed on scene reload 
             instance = this;
-            respawnPosition = new Vector3(-6.95f, 0.82f, 0f); // set initial respawn position here
         }
         else if (instance != this)
         {
             Destroy(gameObject);
         }
+    }
+
+    public Vector3 GetRespawnPosition()
+    {
+        return respawnPosition;
+    }
+
+    public void SetRespawnPosition(Vector3 position)
+    {
+        respawnPosition = position;
     }
 }
