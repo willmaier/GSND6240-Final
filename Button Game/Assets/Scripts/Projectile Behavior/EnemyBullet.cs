@@ -11,7 +11,7 @@ public class EnemyBullet : MonoBehaviour
     GameObject player;
 
     Vector2 moveDirection;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +25,13 @@ public class EnemyBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
-     {        
+        {
             Destroy(gameObject);
-            //not currently working 
-            //Invoke("RestartLevel", 2);
-            //RestartLevel();
-            player.transform.position = respawnPoint.position;
+            // Set respawn position to respawnPoint position
+            RespawnPointManager.instance.respawnPosition = respawnPoint.position;
+
+            // Load current scene to restart level
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             AudioManager.instance.Play("Explosion1");
 
         }
@@ -50,14 +51,5 @@ public class EnemyBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
-
-    }
-
-    void RestartLevel()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
     }
 }

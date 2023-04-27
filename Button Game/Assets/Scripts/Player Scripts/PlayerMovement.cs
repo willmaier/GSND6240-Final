@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+
+        //Debug.Log("Respawn point position: " + RespawnPointManager.instance.respawnPosition);
+        transform.position = RespawnPointManager.instance.respawnPosition;
     }
 
     // ANIMATOR CHECKS
