@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class EnemyBullet : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
-
+    public Transform respawnPoint;
     Rigidbody2D rb;
     GameObject player;
 
@@ -29,7 +29,10 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
             //not currently working 
             //Invoke("RestartLevel", 2);
-            RestartLevel();
+            //RestartLevel();
+            player.transform.position = respawnPoint.position;
+            AudioManager.instance.Play("Explosion1");
+
         }
         else if (collision.gameObject.tag == "Enemy")
         {
