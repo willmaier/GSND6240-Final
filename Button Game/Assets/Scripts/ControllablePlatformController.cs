@@ -73,8 +73,16 @@ public class ControllablePlatformController : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             pTransform = col.gameObject.GetComponent<Transform>();
-            castHit = Physics2D.Raycast(new Vector2(pTransform.position.x, pTransform.position.y - 0.56f), Vector2.down, 0.05f, jumpableGround); //Shoot ray from near bottom of player
-            isPlayerGroundedOnMe = castHit.collider.gameObject == gameObject;
+            castHit = Physics2D.Raycast(pTransform.position, Vector2.down, 0.7f, jumpableGround); //Shoot a ray down from player position
+
+            if (!castHit) // if nothing is hit (i.e. if castHit = false)
+            {
+                isPlayerGroundedOnMe = false;
+            }
+            else
+            {
+                isPlayerGroundedOnMe = castHit.collider.gameObject == gameObject;
+            }
         }
         else
         {
