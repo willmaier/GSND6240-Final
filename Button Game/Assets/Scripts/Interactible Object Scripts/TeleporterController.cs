@@ -28,5 +28,6 @@ public class TeleporterController : MonoBehaviour
     {
         Debug.Log("Teleporting!");
         player.transform.position = teleportTarget.transform.position;
+        AudioManager.instance.Play("TPed");
     }
 }

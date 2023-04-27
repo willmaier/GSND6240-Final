@@ -61,6 +61,19 @@ public class ControllablePlatformController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        //audio for moving platform, stop audio when release the key
+        if (moveInput != Vector2.zero)
+        {
+            if (!AudioManager.instance.isPlaying("PlatformMoving"))
+            {
+                AudioManager.instance.Play("PlatformMoving");
+            }
+        }
+        else
+        {
+            AudioManager.instance.Stop("PlatformMoving");
+            AudioManager.instance.Play("PlatformStoping");
+        }
     }
 
     private Transform pTransform; //player collider for cast

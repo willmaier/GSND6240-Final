@@ -17,6 +17,7 @@ public class ChrageBulletCollisionBehavior : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            AudioManager.instance.Play("ShieldBreak");
         }
 
         else if (collision.gameObject.tag == "Enemy")
@@ -37,6 +38,7 @@ public class ChrageBulletCollisionBehavior : MonoBehaviour
         else if (collision.gameObject.layer == 3) // 3 is layer of solid environment
         {
             Destroy(gameObject);
+            AudioManager.instance.Play("ChargeHitOnWall");
         }
 
         /*else if (collision.gameObject.tag != "Player")

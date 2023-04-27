@@ -284,7 +284,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 099039e010b834c4cb0e4c11fec3b3be, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.03
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -815,6 +815,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: e0431b38d8713e8489fd9d0d3b61e60c, type: 2}
+    - target: {fileID: 5102639300955335591, guid: 84c3a10d95c9aad4e9904f13a15cee3a, type: 3}
+      propertyPath: chargeTimeLimit
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5290005693531563242, guid: 84c3a10d95c9aad4e9904f13a15cee3a, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -1225,11 +1229,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3614756976750155813, guid: c9ea29234b00ea04585702bc1e538ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.3
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 3614756976750155813, guid: c9ea29234b00ea04585702bc1e538ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.2
+      value: -10.7
       objectReference: {fileID: 0}
     - target: {fileID: 3614756976775167268, guid: c9ea29234b00ea04585702bc1e538ae0, type: 3}
       propertyPath: m_Name
@@ -1285,7 +1289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3614756978097715272, guid: c9ea29234b00ea04585702bc1e538ae0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 20.823997
+      value: 27.192638
       objectReference: {fileID: 0}
     - target: {fileID: 3614756978097715272, guid: c9ea29234b00ea04585702bc1e538ae0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1293,7 +1297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3614756978097715272, guid: c9ea29234b00ea04585702bc1e538ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.7357
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9ea29234b00ea04585702bc1e538ae0, type: 3}
@@ -65063,6 +65067,14 @@ PrefabInstance:
     - target: {fileID: 3835446363466072778, guid: 6925e799f65815842a8241aca3c42aa3, type: 3}
       propertyPath: m_Name
       value: RespawnPointManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835446363466072779, guid: 6925e799f65815842a8241aca3c42aa3, type: 3}
+      propertyPath: respawnPosition.x
+      value: -6.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835446363466072779, guid: 6925e799f65815842a8241aca3c42aa3, type: 3}
+      propertyPath: respawnPosition.y
+      value: 0.82
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6925e799f65815842a8241aca3c42aa3, type: 3}

@@ -41,6 +41,10 @@ public class PlayerShooting : MonoBehaviour
         if (cShotCharging)
         {
             ChargeTime += Time.deltaTime;
+            if (ChargeTime >= chargeTimeLimit && !AudioManager.instance.isPlaying("ChargeComplete")) //check if charge time meets limit
+            {
+                AudioManager.instance.Play("ChargeComplete");
+            }
         }
     }
 
@@ -94,6 +98,7 @@ public class PlayerShooting : MonoBehaviour
         {
             //Debug.Log("Successful charged shot.");
             ChargedShoot();
+            AudioManager.instance.Stop("ChargeComplete");
         } // else debug log unsuccessful charged shot
         ChargeTime = 0; // then set charge time to 0
     }

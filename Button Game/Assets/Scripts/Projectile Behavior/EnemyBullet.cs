@@ -32,7 +32,7 @@ public class EnemyBullet : MonoBehaviour
 
             // Load current scene to restart level
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            AudioManager.instance.Play("Explosion1");
+            AudioManager.instance.Play("ExplosionPlayer");
             AudioManager.instance.Stop("Walking");
             AudioManager.instance.Stop("BoosterHolding");
             AudioManager.instance.Stop("BoosterStart");

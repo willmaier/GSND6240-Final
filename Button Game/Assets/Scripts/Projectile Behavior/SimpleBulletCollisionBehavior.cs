@@ -16,6 +16,7 @@ public class SimpleBulletCollisionBehavior : MonoBehaviour
         if (collision.gameObject.tag == "Shield")//simple shot doesn't destory shield tag.
         {
             Destroy(gameObject);
+            AudioManager.instance.Play("ShieldImpact");
             //Destroy(collision.gameObject);
         }
 
@@ -37,6 +38,7 @@ public class SimpleBulletCollisionBehavior : MonoBehaviour
         else if (collision.gameObject.layer == 3) // 3 is layer of solid environment
         {
             Destroy(gameObject);
+            AudioManager.instance.Play("SimpleHitOnWall");
         }
 
         /*else if (collision.gameObject.tag != "Player")

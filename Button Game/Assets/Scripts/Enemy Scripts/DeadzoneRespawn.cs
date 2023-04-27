@@ -17,7 +17,7 @@ public class DeadzoneRespawn : MonoBehaviour
         if (collision.tag == "Player")
         {
             player.transform.position = respawnPoint.position;
-            AudioManager.instance.Play("Explosion1");
+            AudioManager.instance.Play("ExplosionPlayer");
         }
     }
 }
